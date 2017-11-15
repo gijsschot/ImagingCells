@@ -1,0 +1,163 @@
+\chapter{Phase Retrieval}
+The problem of missing phase information is well known and is called the phase problem. There are many ways to overcome it: for example in crystallography homology modelling or the anomalous scattering of heavy atoms is exploited to retrieve phases. Holography uses the interference between two wave fields to obtain the phases. Ptychography uses the precisely known overlap and high redundancy between many exposures to solve the phase problem. CXI makes use of the fact that pnCCD detectors so-called oversample the diffraction pattern, which means that phases can under certain conditions be retrieved from the intensity pattern itself. The next sections will describe oversampling in more detail, explain how phases can be retrieved from an oversampled signal using an iterative phase retrieval method, and finally how phase retrieval can be validated. 
+
+\section{Sampling} 
+Both crystallography and CXI are used to ultimately find the structure of proteins by measuring the 3D Fourier or molecular transform of the object $H$ ($\mathcal{F}(H)$). In 1952 Sayre noticed that the Bragg peaks sample $\mathcal{F}(H)$ at the critical sampling rate [Sayre] (See Shannon 1949). This means that knowing the phases belonging to the Bragg peaks is just enough to back-calculate the structure of the query object. This also implies that if the sampling rate is finer than twice $S_{Bragg}$, it is theoretically possible to retrieve the phase information from the measured intensities alone. The latter conclusion is the basis of many phase retrieval techniques in CXI, as well as some phasing techniques in SFX [Chapman].
+I find it remarkable that a full protein structure can be derived from a 3D set of isolated Bragg peaks. To illustrate why this is the case, as well why phase information can be retrieved from a 'continuous' intensity pattern, we should look at sampling theory and crystallography. In a crystal a molecule (say haemoglobin) is packed in a regular lattice structure. Mathematically this can be described by $C = H * L$. Where $C$ denotes the crystal, $H$ is the electron density of haemoglobin, $L$ is the lattice structure of the crystal, and $*$ denotes the convolution. Convolution just places a copy of H at each point in L. Using the convolution theorem, the diffraction pattern of crystal can be described as: $\mathcal{F}(C) = \mathcal{F}(H * L) = \mathcal{F}(H) \times \mathcal{F}(L)$. The Fourier transform of a lattice structure $\mathcal{F}(L)$ gives another lattice structure with inverse lattice dimensions. This means that the Fourier transform or molecular transform of haemoglobin $\mathcal{F}(H)$ is sampled at discrete points $\mathcal{F}(L)$, the Bragg peaks ($S_{Bragg}$). In single particle imaging the particle is free from the crystal lattice, and Bragg peaks give way to the almost continuous molecular transform sampled at the much finer pixel grid of the pnCCD detector ($S_{SP}$). In the case where the molecular transform is undersampled in fourier space, the real space analogue of overlapping copies of proteins would occur.
+Figure \ref{fig:sampling} illustrates three cases of sampling: critical sampling (crystallography), undersampling and oversampling (single particle imaging). It is clear that the original molecular transform can be retrieved computationally in the cases of critical sampling and oversampling, and not when the molecular transform is under-sampled. 
+In real space the successful cases correspond mathematically to the object being smaller than or equal to the lattice spacing $l >= o$. In a crystal there are crystal contacts between unit cells, but atoms cannot overlap. This means that by definition the lattice spacing is the size of the unit cell ($l=o$ in \ref{fig:sampling}). This borderline sampling rate is called critical sampling. Any sampling rate larger than $S_C$ is called oversampling. Notice that the finer sampling rate in Fourier space corresponds to a wider lattice spacing in real space. Since the object is always the same size, oversampling means that there is an area around the object which has no electron density. A unit describing the relative size of the object compared to the field of view is called the oversampling rate $\sigma_o = \frac{l}{o}$.
+NEED EXPLANATION OF OVERSAMPLING
+
+\begin{figure}[h]\label{fig:sampling}
+\centering 
+\includegraphics[width=120mm]{SamplingTheory.png}
+
+\caption{Different rates of sampling explained}
+\end{figure}
+
+\section{Iterative Phase retrieval}
+In practice there are many ways of actually retrieving the phase information from the diffraction pattern, but one of the most common phase retrieval techniques are variations of convex optimization algorithms. In this section the general idea behind convex optimization is explained.
+
+As can be seen in Figure oversampling in Fourier space implies that there is an area the size of ($l-o$) around the object for which we know the electron density is zero. This forms a constraint on the data. We know that a correct choice of phases would make the corresponding $\rho(r)$ be zero in this area. The area that can contain positive electron density is called the support $S$ (similar to the fourth column in figure \ref{fig:sampling}). Furthermore, we know the recovered Fourier amplitudes should agree with the measured intensities. In our case an optimization algorithm will try to find a solution for which the distance to both these constraints is minimal. 
+
+An iterative approach to find the solution that minimizes the disagreement of both constraints can be
+described as follows:\\
+
+
+\begin{enumerate}
+\item Assign random phases to each pixel.
+\item Inverse Fourier transform F(s).
+\item Set all electron density outside of S to zero, keep other electron density.
+\item Fourier transform $\rho(r)$
+\item Make sure that the recovered amplitudes match the measured intensities. Keep the phases.
+\item Go back to step 2.
+\end{enumerate}
+
+A way to formally write down these steps is found in  constraint of step 2 and 5 can be found in equation \ref{eq:ER}.
+
+\begin{equation}\label{eq:ER}
+F_{n}(S) = \mathcal{F}(\rho_n)
+F_{n+1}(S) = \sqrt{I}\frac{F_{n}(S)}{|F_n(S)|}
+\rho_{n+1} = \Pi \mathcal{F^{-1}}(F_{n+1}(S))
+\end{equation}
+
+Two error metrics can be associated with both constraints; the fourier error ($E_f$) and the real space error ($E_r$). $E_f$ and $E_r$ are defined as:
+
+
+\subsection{Error Reduction}
+Convex optimization assumes that hyperplane of all possible solutions that forfill to one of the constraints is convex. A most straightforward implementation of the above-described algorithm is Error Reduction, invented Fienup based on algorithm by Gerchberg, Saxton. would in this case be enough to retrieve the true solution.  
+
+\subsection{HIO}
+It has been shown that the solution set that for fills the support constraint is convex. Due to noise and missing data our solution set however are often not convex, which means that there are multiple (local) minima. In this case ER will likely not find the global minimum or true solution. Other algorithms had to be invented. Historically an algorithm named HIO was one of the first that can escape from local minima. This is achieved by slightly adjusting step 5. 
+
+\subsection{RAAR}
+Another algorithm that is often used is Relaxed A
+Raar 
+
+Other algorithms that are often used for Phase retrieval are diffusion map (DM), GHIO, .
+
+\section{Validation}
+In iterative phase retrieval every reconstruction results in an image, irrespective of it having biological relevance or not. It is therefore very important to have tools to validate a reconstruction. This section will describe different validation tools used in the field.
+
+\subsection{Errors}
+The most basic method to assess the difference in quality between two reconstructions is comparing the respective errors. The reconstruction with lower errors is generally considered to be a more successful reconstruction. This method however does not tell anything about the biological validity of a reconstruction and is most often only used to exclude outliers (reconstructions that have clearly failed).
+ 
+\subsection{PRTF}
+The standard tool to assess the quality of a reconstruction is the phase retrieval transfer function (PRTF). This function considers the variation within a set of independent reconstructions (each reconstruction starting from a random set of phases), and uses this variation to quantify the resolution of a reconstruction. The basic assumption behind the method is that if a similar object is retrieved repeatedly, this object is supposed to be similar to the true object. The variation between reconstructions is calculated for each pixel $i$ by adding all recovered amplitudes for that pixel and dividing the total vector by square root of the measured intensity for that pixel $v_i = |\frac{\sum A_i}{\sqrt{I_i}}|$. If the value of $v_i$ is close to unity all reconstructions recovered a similar amplitude for pixel i. The closer $v_i$ is to zero the more difference there is between individual reconstructions. The standard PRTF plot shows the radial average of $v_i$. A common practice is the field is to define the resolution of a reconstruction as the first time the 1D PRTF drops below $\frac{1}{e}$. This threshold is arbitrary. For spherical objects a periodic drop in the 1D PRTF, corresponding to a drop in measured intensity, can be observed. This drop can be explained by the fact that the phase of a pixel measuring 0 intensity is unconstrained.
+ 
+\subsection{Missing Mode Analysis}
+As described in previous sections diffraction patterns lack data. Even in the best case the central region will be missing because the direct beam will otherwise damage the detector. The main other sources of missing data are detector geometry and saturation. 
+
+Reconstruction algorithms deal with this missing data by recovering the phase as well as the amplitude for the pixels in these regions. In many cases the missing data does not affect the stability of phase recovery, however this cannot be said in general. For this we have to note that the Fourier constraint does not limit the amplitudes in the missing data area, and the real-space constraint does not limit the electron density inside the support. If there exists an object that can fit inside the support and has a Fourier transform that is zero outside the missing data region, this object could be arbitrarily added to the solution and thus would form an ambiguity in the reconstruction process.
+
+In general completely unconstrained objects do not exist. Objects that fit the support constraint and only slightly contribute outside the missing data region, i.e. weakly constrained objects, can however exist. In the design of an experiment, or when deciding whether or not to phase an object it is important to have a tool that predicts whether weakly constrained objects exist or not. Missing mode analysis is such a tool.
+
+The DFT can be represented in matrix form, where each column represents a pixel in real space and each row represents a pixel in Fourier space. The rows and columns can be reordered according to whether they conform to the fourier and real space constraints or not.
+\begin{equation}
+\mathcal{F} = {HOW do i make a matrix?}
+\end{equation}
+ 
+We are after objects that minimize $|\mathcal{F}_{SM}\rho|$. A common method to find such objects is singular value decomposition [Eckart]. This method decomposes $|\mathcal{F}_{SM}\rho|$ into a diagonal matrix $\Sigma$, and two unitary matrices U and V in the following way.
+
+EXPLAIN EIGENVALUES AND BASIS
+
+
+
+
+\subsection{Hierarchical clustering}
+To test whether the Fourier Error and Real space error are good measures to assess the variance between individual reconstructions, a clustering analysis can be performed. An example of such methods is UPGMA (Unweighted Pair Group Method with Arithmetic Mean) hierarchical clustering [Sokal, Michener]. This method checks the similarity between reconstructions by making pairwise pixel-to-pixel comparisons between all reconstructions. The similarity score is the normalized scalar product between a pair reconstructions after translating them to their optimal fit. We plot the similarity score of  each cluster as a function of the number of clusters and choose the agglomeration step where the plot makes a "kink". This is a standard way to estimate the number of clusters present in the set of reconstructions. This capability is an advantage of the UPGMA clustering algorithm. In a 2D plot of FE vs RE, color-coded by cluster, it is possible to see whether or not there is a correlation of reconstruction similarity and error score. An illustration of this method can be found in \ref{fig:UPGMA}
+ 
+\begin{figure}[h]\label{fig:UPGMA}
+\centering 
+\includegraphics[width=40mm]{UPGMA_Clustering.jpg}
+\caption{UPGMA Clustering.}
+\end{figure}
+
+In the case that several large clusters remaining after applying a real-space error and Fourier-error threshold the clusters have to be examined carefully. If the cluster correlates with the errors we keep the cluster with the lowest error, otherwise we suggest keeping all clusters for further evaluation. In the latter case there is a possibility of over clustering.
+
+ 
+\section{Simulated Phase Contrast Methods}
+Once one has retrieved the phase of the diffraction pattern, one has complete knowledge of the information encoded in the said wave-field. This total knowledge is powerful, because it allows the emulation of the action of any imaging system for which an associated mathematical transform can be written, regardless of whether that system is experimentally realizable in hardware.
+
+For example, differential interference contrast imaging or Nomarski imaging is experimentally a well established technique to visualize the changes in phase. This change can have biological meaning, as for example the density inside certain organelles can be higher than the average density in cells. Normarski imaging will give a more pronounced image of the borders of the organelle. For an example see ref [mitochondrium). 
+
+In its simplest form, differential interference contrast takes a coherent wave-field of interest, say $\psi(x,y,z = 0)$, and then interferes this wave-field with a copy of itself that has been given both a slight transverse displacement ($\Delta x$, $\Delta y$) and a phase shift $\phi_0$ (Nomarski and Weill,1955). Thus the intensity of the resulting wave-field is [Paganin]:
+$\Omega(x,y,z)+ e^{(i\phi_0)} \Omega(x - \Delta x)$%,y - \Delta y,z) $%^2$, from which one can show (using the Fourier shift theorem) that the transfer function becomes:
+
+%\begin{equation}
+%T_{DIC}(kx, ky, \tau) = 1 + e^{(i(φ0 − k_x∆x − k_y∆y))},
+%\tau = (\phi_0, \deltax, \deltay)
+%\end{equation}
+
+We have created simulated DIC images of the reconstructed cell images shown in the results part.
+
+\section{Shrinkwrap}
+While HIO and RAAR perform well when the support is tight and well known, phasing can practically become impossible if the support is too large. In 2003 Marchesini developed an algorithm that does not require a priori known support as input, but instead tries to deduce the shape of the support during the reconstruction. It starts by guessing the support from the autocorrelation. It does so by blurring the autocorrelation and selecting all pixels above a certain threshold to be included in the support. Consecutively after each n iterations the support is updated by applying a Gaussian blur to the real space image and selecting the pixels that have a value above a certain threshold. By varying the amount of blur and/or the selection threshold as the iterations progress, the support can slowly wrap and shrink to the true shape of the object. The general idea behind the algorithm is that even with a non-accurate support some features will be recovered well, and by using these features finally the an accurate support will be found. The algorithm has been very successful for experimental data [].
+
+\chapter{3D restructions}
+So far we have dealt with 2D diffraction patterns. Although much can be learned (and has been learned) from 2D images, having a structural 3D model is essential to understand the functioning of biomolecules. From the Fourier slice theorem we know that a diffraction pattern is a 2D slice through the center of the 3D diffraction pattern of the object. Different slices could therefore build up the 3D fourier transform of the object. In the current CXI setup it is impossible to image one object multiple times, making it difficult to reconstruct the complete 3D diffraction volume from one particle alone. If the particle of interest is reproducible the diffraction pattern from each copy could be used to construct the 3D fourier transform of the object. This does pose a new problem: the relative orientation of each diffraction pattern compared to the others has to be recovered. A variety of reconstruction algorithms have been proposed for recovering the relative orientation of diffraction data, including the EMC algorithm [Loh], the manifold embedding algorithms [Giannakis], simple best-fit models [Tegze], and multi-particle cross-correlation analysis [Saldin, Kirian, Kam, Kurta]. Theoretical studies suggest that the determination of diffraction pattern orientation should be possible even with very low photon counts of as little as 1000 scattered photons per image [Loh], making EMC and ME very suitable to recover the 3D structure of sparsely scattering single proteins.
+
+\section{the EMC algorithm}
+The EMC algorithm is an iterative program. On the one side you have the 2D measured intensity patterns ($IM_i$), and on the other side a 3D model of the Fourier space of the object ($M$). Each iteration starts with the expand step in which the 3D model is expanded in n central 2D slices ($IP_i$). N is dependent on the sampling rate of the 3D model. Each of the slices are compared to each diffraction pattern, using a model for the noise, to predict a probability score that the measured diffraction pattern is coming from the model diffraction pattern. To paraphrase: imagine that you would image each particle at the same orientation, the measured diffraction patterns will not be identical, since the noise is varying from shot to shot. Each pixel however will have an associated distribution of measured intensity values. Based on this distribution, which can for example be Poissonian in the case of pure shot noise, one can assign a probability that $IM_i$ is coming from slice $IP_i$. In  a good model not only will the measured values for a given 3D pixel (voxel) be similar for different $IM$, the distribution of measured values will have to be similar to the known noise distribution. This is a very subtle idea and utilizes the data very efficiently.
+
+Comparing all $IM_i$ to each $IP_i$, lead to n probability distributions predicting the likelihood of the orientation of the measured diffraction patterns. This step is called the maximize step. Using the probability distributions as weights, a new model $M_{n+1}$ is generated from the measured diffraction patterns in the so-called compress step. 
+The initial model $M_0$ can be a random model. After one iteration a similar patterns will end up in similar orientations which hopefully will make $M_1$ a bit more similar to the real Fourier pattern of the particle. After repeating this Expand-Maximize-Compress cycle multiple times a realistic model might be generated.
+
+\section{Non-reproducible objects}
+The addition of diffraction patterns from non reproducible object (i.e. incoherent addition) is very problematic in Fourier space space [Maia], as all features of the resolution of variation will be washed out. This makes it very difficult to retrieve 3D information from an heterogeneous object such as cells and the fold of many proteins. The tackle the heterogeneity problem many adaptations of existing algorithms or new algorithms have been developed.
+
+\subsection{Multi-model EMC}
+Currently a version of EMC is on its way that can generate multiple models of the same particle. It is very similar to single state EMC, but differs in the fact that it build multiple self-consistent models. 
+
+\section{the Manifold Embedding algorithm}
+
+
+\subsection{Tomography and sub-tomogram averaging}
+Tomography used a set-up in which the object is imaged from m different but known orientations. Sometimes this is enough to gain enough information about the object in 3D. Crowther's criterion describes the relation between resolution and number of required exposures (m). For large objects and/or high resolutions it becomes difficult to have enough exposures to recover the full object at atomic resolution. In this case one could use multiple low resolution parts of the tomogram (sub-tomogram) to build up a model of semi-repoducible object in a method similar to EMC. The limit of the number of beams (m) for which this is possible in an XFEL setup is currently under investigation.
+
+\subsection{Holography}
+At high resolutions the detector does not measure the Ewald sphere and the Friedel symmetry of the diffraction pattern breaks. This is often very visible at longer wavelengths (<400 eV). This curvature can be exploited to resolve semi-3D information about the object, but the extend at which this is possible is disputed. In some cases much is known about the possible shape or buildup of the particle and then it is possible to reconstruct a 3D structure [Miao, Fennel, ...]
+
+\chapter{Image Classification}
+In order for algorithms such as EMC to work, the amount of heterogeneity within the diffraction data set has to be limited [TOMAS is there an article describing this?]. Furthermore, each of the steps in the experiment introduces it own type of noise to the measured diffraction pattern. For example think of the debris clumping around small particles compared to the drop when sprayed with the GDVN, detector malfunctioning or saturation, or intensity fluctuations due to the random start of the SASE process. Often the results of the first two types of noise can not be tolerated by EMC, and image classification before the EMC step is necessary. Also fast feedback about the first type of noise is very useful to have during the experiment. So far a very robust sizing method has been developed, but more extended methods might come in useful. Several methods shown here can give rapid feedback on the heterogeneity of the particle.
+
+\section{Template-based classification}
+If your object has a known shape it could be possible to only select the diffraction patterns that are similar to a set of expected diffraction patterns from the object called templates. Paper III explores the possibility of template-based classification. In general this method is highly dependent on the choice of template, as well as the amount and type of variation present in your sample.
+
+\section{Feature extraction}
+Another way of selecting diffraction patterns is by extracting general features from the diffraction pattern such as size, particle shape, amount of saturation, number of particles in the beam. Based on the relative values associated with the features patterns might be selected or not, or the experimental conditions might be rapidly adjusted. This section describes several methods to extract features.
+
+\subsection{Size}
+A common method to determine the size of an object is fitting the central speckle to the central speckle of simulated diffraction pattern from a sphere. This method has shown to be successful for particles that have an icosahedral shape to spherical shape [Hantke,Daurer]. If the diffraction pattern also has the 3rd to the 5th minima present, the average of these minima can also be used to describe the size of the object. This method might be especially useful for strong scatterers, because the central speckle or first minimum might not be reliable due to saturation effects.
+
+It might also be possible to determine the size and shape of an object from a filtered autocorrelation. This is useful when the object cannot be approximated by a sphere, but is rather elongated in one axis. Due to aerosol injection, the strongest contrast in the object is coming from the edge of the object. Therefore the edge is often one of the most clear features in an autocorrelation. This method is limited to convex objects.
+
+\subsection{Multiple scatterers in the focus}
+
+
+\subsection{Edge detection}
+Some objects are characterized by having sharp edges. A sharp edge in real space corresponds to a streak in the direction perpendicular to the edge in Fourier space. Objects and/or orientations of objects might be classified by determining if streaks are present, and how many. Figure explains the idea behind a streak finding algorithm described in paper IV.
+
+
+\chapter{Software}
+\section{RedFlamingo}

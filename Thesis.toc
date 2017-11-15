@@ -1,0 +1,83 @@
+\select@language {english}
+\contentsline {part}{Part~I:~Concept}{9}{part.1}
+\contentsline {chapter}{\numberline {1}Interaction of Light and Matter}{11}{chapter.1}
+\contentsline {section}{\numberline {1.1}Light as electromagnetic radiation}{11}{section.1.1}
+\contentsline {section}{\numberline {1.2}Photon-material interactions}{12}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}{Scattering by a single free electron}}{13}{subsection.1.2.1}
+\contentsline {section}{\numberline {1.3}{Diffraction}}{13}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}{Lorentz Force}}{13}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}{Scattering by a single free electron}}{14}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}{Two-body scattering}{Scattering from two electrons}}{15}{subsection.1.3.3}
+\contentsline {subsection}{\numberline {1.3.4}Scattering from multiple electrons}{17}{subsection.1.3.4}
+\contentsline {subsection}{\numberline {1.3.5}Scattering Potential}{18}{subsection.1.3.5}
+\contentsline {section}{\numberline {1.4}Radiation Damage}{18}{section.1.4}
+\contentsline {section}{\numberline {1.5}{Diffract-before-destroy}{Diffraction before destruction}}{19}{section.1.5}
+\contentsline {part}{Part~II:~Motivation}{21}{part.2}
+\contentsline {chapter}{\numberline {2}Motivation}{23}{chapter.2}
+\contentsline {part}{Part~III:~Concept}{25}{part.3}
+\contentsline {chapter}{\numberline {3}Interaction of Light and Matter}{27}{chapter.3}
+\contentsline {section}{\numberline {3.1}Light as electromagnetic radiation}{27}{section.3.1}
+\contentsline {section}{\numberline {3.2}Photon-material interactions}{28}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Scattering by a single free electron}{29}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Two-body scattering}{30}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Scattering from multiple electrons}{31}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Scattering Potential}{32}{subsection.3.2.4}
+\contentsline {section}{\numberline {3.3}Radiation Damage}{34}{section.3.3}
+\contentsline {section}{\numberline {3.4}Diffract-before-destroy}{34}{section.3.4}
+\contentsline {chapter}{\numberline {4}Pulse Generation by XFEL}{36}{chapter.4}
+\contentsline {section}{\numberline {4.1}Klystron}{36}{section.4.1}
+\contentsline {section}{\numberline {4.2}Bunch Compression}{37}{section.4.2}
+\contentsline {section}{\numberline {4.3}Undulator}{38}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Monochromatic X-ray radiation}{38}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}SASE}{39}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}Improvements}{40}{section.4.4}
+\contentsline {chapter}{\numberline {5}Sample Introduction}{41}{chapter.5}
+\contentsline {section}{\numberline {5.1}Substrate-bound Sample Delivery}{41}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Solid substrate}{41}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Micro Compartments}{42}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Liquid Jets}{42}{subsection.5.1.3}
+\contentsline {section}{\numberline {5.2}Substrate-free sample delivery}{43}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Gas Dynamic Virtual Nozzle}{43}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Aerodynamic Lens Stack}{43}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Electro Spray Ionisation}{44}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}Drop-on-demand}{45}{subsection.5.2.4}
+\contentsline {chapter}{\numberline {6}Data recording}{46}{chapter.6}
+\contentsline {section}{\numberline {6.1}the pnCCD detector}{46}{section.6.1}
+\contentsline {section}{\numberline {6.2}Quantum Efficiency}{46}{section.6.2}
+\contentsline {section}{\numberline {6.3}Missing Data}{47}{section.6.3}
+\contentsline {section}{\numberline {6.4}Saturation}{47}{section.6.4}
+\contentsline {chapter}{\numberline {7}Phase Retrieval}{48}{chapter.7}
+\contentsline {section}{\numberline {7.1}Oversampling}{48}{section.7.1}
+\contentsline {section}{\numberline {7.2}Iterative Phase retrieval}{49}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Error Reduction}{50}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}HIO}{50}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.3}RAAR}{50}{subsection.7.2.3}
+\contentsline {section}{\numberline {7.3}Validation}{50}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Errors}{50}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}PRTF}{51}{subsection.7.3.2}
+\contentsline {subsection}{\numberline {7.3.3}Missing Mode Analysis}{51}{subsection.7.3.3}
+\contentsline {subsection}{\numberline {7.3.4}Hierarchical clustering}{52}{subsection.7.3.4}
+\contentsline {section}{\numberline {7.4}Simulated Phase Contrast Methods}{52}{section.7.4}
+\contentsline {section}{\numberline {7.5}Shrinkwrap}{54}{section.7.5}
+\contentsline {chapter}{\numberline {8}3D restructions}{55}{chapter.8}
+\contentsline {section}{\numberline {8.1}the EMC algorithm}{55}{section.8.1}
+\contentsline {section}{\numberline {8.2}Non-reproducible objects}{56}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}Multi-model EMC}{56}{subsection.8.2.1}
+\contentsline {section}{\numberline {8.3}the Manifold Embedding algorithm}{56}{section.8.3}
+\contentsline {subsection}{\numberline {8.3.1}Tomography and sub-tomogram averaging}{56}{subsection.8.3.1}
+\contentsline {subsection}{\numberline {8.3.2}Holography}{57}{subsection.8.3.2}
+\contentsline {chapter}{\numberline {9}Image Classification}{58}{chapter.9}
+\contentsline {section}{\numberline {9.1}Template-based classification}{58}{section.9.1}
+\contentsline {section}{\numberline {9.2}Feature extraction}{58}{section.9.2}
+\contentsline {subsection}{\numberline {9.2.1}Size}{58}{subsection.9.2.1}
+\contentsline {subsection}{\numberline {9.2.2}Multiple scatterers in the focus}{59}{subsection.9.2.2}
+\contentsline {subsection}{\numberline {9.2.3}Edge detection}{59}{subsection.9.2.3}
+\contentsline {chapter}{\numberline {10}Software}{60}{chapter.10}
+\contentsline {section}{\numberline {10.1}RedFlamingo}{60}{section.10.1}
+\contentsline {part}{Part~IV:~Results}{61}{part.4}
+\contentsline {chapter}{\numberline {11}Results}{63}{chapter.11}
+\contentsline {section}{\numberline {11.1}Imaging live cells}{63}{section.11.1}
+\contentsline {section}{\numberline {11.2}Classification}{65}{section.11.2}
+\contentsline {section}{\numberline {11.3}Software}{65}{section.11.3}
+\contentsline {chapter}{\numberline {12}Sammanfattning pa Svenska}{67}{chapter.12}
+\contentsline {chapter}{References}{69}{section*.3}

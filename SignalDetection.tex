@@ -1,0 +1,47 @@
+\chapter{Data recording}
+After the interaction between light and our material we have to measure the scattered waves. Equation shows that the scattered wave is determined by the complex amplitude F(S). The real part of F(S) is called the amplitude, and the imaginary part of F(S) is called the phase ($\phi$). Currently there no device is capable of measuring the phase of x-rays directly, as it changes in the attosecond range. The former can be measured, but based on the low probability of interaction between light and matter, as well as the vacuum condition in which the detector is placed, this is not trivial. In the satellite mission XMM-Newton of the European space agency, two types of x-ray detectors were used: the CMOS and the pn-junction charge coupled device (pnCCD). The experiments described in this thesis used a modified version of the original pnCCD type detector. 
+
+\section{the pnCCD detector}\label{sec:pnccd}
+The exact working of a pnCCD detector requires an understanding
+of semiconductor physics, which goes outside of the scope of this
+thesis. A pnCCD consists of three layers of material. First a layer of ...
+protecting the other layers from the high vacuum. Secondly there is a layer
+of high-purity n-type silicon. In this layer the incoming x-ray
+photons are absorbed and
+electrons are released from the bulk material through the photoexcitation. A third layer consisting
+p-type silicon is placed behind the second layer. By applying a
+positive charge to the layers electrons move towareds the back of the
+detector where they are stored in potential wells. At the frame rate
+these wells are depleted, and the current is amplified and then measured. 
+   
+\section{Quantum Efficiency}
+An important parameter describing the pnCCD is the quantum
+efficiency (QE). This parameter describes the fraction of incident photons 
+converted to charge carriers. Often this is close to 100\% but for
+each material the QE varies as a function of wavelength. A high QE
+improve the signal to noise ratio, which becomes important in low the
+low signal areas of the detector.
+record the diffracted signal in that low scattering parts of the detector. High energy X-ray radiation
+(larger than 5keV) would require another type of detector than the pnCCD. 
+
+\section{Missing Data}
+The geometry of the detectors used in the experiments decribed in this
+thesis consist of two moveable halves (38.4 mm by 76.8 mm), with a
+dead area of at least 0.8 mm in between both halves. In the center of
+detector a hole is created to let the high-intensity direct beam
+through (each detector halve misses a semicircle). In this
+area there is no intensity information present. 
+ 
+\section{Saturation}
+Besides missing data due to the detector geometry, detector saturation
+might also lead to missing information. The potential wells described
+in \ref{sec:pnccd} can maximally hold a certain amount of charge. If
+more charge is present (many photons scatter in th, the excess charge overflows to neigboring
+wells, making it impossible to accurately use the original and the
+affected wells. If the amount of charge is very high, it might even
+damage the detector itself. If no bragg peaks are present on the
+detector, all saturation will occur in the center of the detector. 
+
+
+
+
