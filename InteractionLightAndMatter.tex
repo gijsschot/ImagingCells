@@ -25,17 +25,18 @@ Here, $\vec{E}$ is the electric field, $\vec{B}$ is the magnetic field, $\vareps
 %exploit this phenomena. 
 An important consequence of these equations is that a moving charge will induce a magnetic field, which in its turn induces a change in the electric field, and so on.
 
-In order to understand why these laws unify magnetism, electricity and optics, we have to consider a special case: vacuum. In vacuum there are no localized charges ($\rho = 0$) and no currents ($\vec{J}=0$), which simplifies equation \ref{eq:maxlaw1} and \ref{eq:maxlaw4}. 
+In order to understand why these laws unify magnetism, electricity and optics, we will consider a special case: vacuum. In vacuum there are no localized charges ($\rho = 0$) and no currents ($\vec{J}=0$), which simplifies equation \ref{eq:maxlaw1} and \ref{eq:maxlaw4} to: 
 
 \begin{equation} \nabla \cdot   \vec{E} = 0 \label{eq:maxlaw1_vac}\end{equation}
 \begin{equation} \nabla \times \vec{B} = -\mu_0\varepsilon_0\frac{d\vec{E}}{dt}\label{eq:maxlaw4_vac}\end{equation}
 
-Furthermore, experiments showed $\varepsilon = \varepsilon_0 = 8.854\cdot10^{-12} Fm^{-1}$, and $\mu = \mu_0 = 1.257 \cdot 10^{-7} N A^{-2}$. If we now ask ourselves what field change caused by a change in the electric field ($\nabla \times( \nabla \times \vec{E}) $) we can derive something quite amazing:  
-\[ \nabla \times( \nabla \times \vec{E}) { \isdef}\nabla (\nabla \cdot
+Furthermore, experiments showed that the permittivity for vacuum, $\varepsilon_0 = 8.854\cdot10^{-12} Fm^{-1}$, and the permeability for vacuum$mu_0 = 1.257 \cdot 10^{-7} N A^{-2}$. If we now ask ourselves what the field change caused by a change in the electric field is by studying the equation $\nabla \times( \nabla \times \vec{E}) $, we can derive something quite amazing:  
+\[ \nabla \times( \nabla \times \vec{E}) = \nabla (\nabla \cdot
 \vec{E}) -\nabla^2 \vec{E} =-\nabla^2 \vec{E} \]
-The first equality is mathematical, and for the second equation \ref{eq:maxlaw1_vac} is used. Another way of writing this equation is:
+The first equality is a well known mathematical relation, and for the second equality equation \ref{eq:maxlaw1_vac} is used. 
+Now lets rewrite the equation in a different way:
 \[\nabla \times( \nabla \times \vec{E})=
-\nabla\times(-\frac{d\vec{B}}{dt}) \isdef
+\nabla\times(-\frac{d\vec{B}}{dt}) =
 -\frac{d}{dt}(\nabla\times\vec{B})=\frac{d}{dt}(\mu_0\varepsilon_0\frac{d\vec{E}}{dt})
 = \mu_0\varepsilon_0\frac{d^2\vec{E}}{dt^2}\]
 In the first equality we used equation \ref{eq:maxlaw3}. In the second equality we used a general algebraic property. In the third equality we used \ref{eq:maxlaw4_vac}, and in the last equality we combined the two time derivatives. Together these equations state that:
@@ -44,44 +45,50 @@ In the first equality we used equation \ref{eq:maxlaw3}. In the second equality 
 \frac{d^2\vec{E}}{dt^2} = \frac{1}{\mu_0\varepsilon_0}\nabla^2 \vec{E} = v^2 \nabla^2 \vec{E},      v = \frac{1}{\sqrt{\mu_0\varepsilon_0}}
 \end{equation}
 
-Equation \ref{eq:wave_eq} is known as the wave equation, which is used to describe the propagation of a wave. Combining this results with the experimentally determined value for $\mu_0$ and $\varepsilon_0$ shows that electromagnetic waves travel at \(3\cdot 10^8 \frac{m}{s}\), which agreed with the then known speed of light \cite{Froome1971}. This result strongly hints at the possibility that light can be an electromagnetic wave. Further experiments succeeded in demonstrating the existence of long-wavelength electromagnetic waves and showed that their properties are consistent with the properties of visible light, including their velocity. Visible light has now become part of the broader spectrum of electromagnetic radiation. Although Quantum Mechanics turned the description of light as wave upside down, many phenomena can be described by treating light as a wave. 
+Equation \ref{eq:wave_eq} is known as the wave equation, which is used to describe the propagation of a wave with the speed $v$. Combining this results with the experimentally determined value for $\mu_0$ and $\varepsilon_0$ shows that electromagnetic (EM) waves travel at \(3\cdot 10^8 \frac{m}{s}\), which agreed with value of the speed of light \cite{Froome1971}. This result strongly hints at the possibility that light is an electromagnetic wave. Further experiments succeeded in demonstrating the existence of electromagnetic waves with long wavelengths and showed that their properties are consistent with the properties of visible light, including their velocity. Visible light has now become part of the broader spectrum of electromagnetic radiation. Although Quantum Mechanics complicated the description of light further, as light can demonstrate particle-like behaviour under certain conditions. Many phenomena however can be described by treating light as a wave. 
 
 \section{Photon-material interactions}
-Assuming that light is electromagnetic radiation, it is easy to understand that a change in electric field will affect its propagation. There are four mechanisms through which radiation interacts with matter: photo-absorption, scattering, photo-nuclear absorption and pair production. The latter two phenomena only occur when matter is exposed to high energy gamma rays, and are therefore of little relevance to this thesis. Photo-absorption is facilitated primarily through the process of photo-excitation/photo-ionisation of electrons. Scattering can be divided into two classes: elastic scattering and inelastic scattering. In a scattering process the direction of the radiation is changed. Elastic scattering does not result in a change of kinetic energy of the scattering particle, nor does it change the wavelength of the radiation. Inelastic scattering leads to both a change in wavelength of the radiation, and a change in kinetic energy of the scatterer. Photo-absorption and inelastic scattering deposit energy into the object which will lead to structural changes. Elastic scattering on the other hand can be used to gain structural information about the object, without altering the structure. 
+Assuming that light is electromagnetic radiation, it is easy to understand that a change in electric field will affect its propagation. There are four mechanisms through which radiation interacts with matter: photoabsorption, scattering, photo-nuclear absorption and pair production. The description of these phenomena will treat as if light will come in discrete quanta: photons. 
+Photonuclear absorption and pair production only occur when matter is exposed to high energy gamma rays, and are therefore of little relevance to this thesis. Photoabsorption is facilitated primarily through a process called photoexcitation, in which an electron is excited to a higher level of energy, or possibly ionized in the case of photoionisation. Scattering can be divided into two classes: elastic scattering and inelastic scattering. Elastic scattering does not result in a change of kinetic energy of the scattering particle, nor does it change the wavelength of the radiation. Only the direction of the radiation can be changed. Inelastic scattering leads to both a change in wavelength of the radiation, and a change in kinetic energy. Photo-absorption and inelastic scattering deposit energy into the object which will lead to structural changes of the object. Elastic scattering on the other hand can be used to gain structural information about the object, without causing damage to the object. 
 
 \subsection{Scattering by a single free electron}
-The simplest example of elastic scattering is Thompson scattering from a free electron. A free electron will scatter (or diffract) the incoming radiation in all directions. An important physical concept for understanding scattering on a deeper level is the Lorentz force. 
+The simplest example of elastic scattering is Thompson scattering from a free electron. A free electron will scatter or diffract the incoming radiation in all directions. An important physical concept for understanding scattering on a deeper level is the Lorentz force which describes the force exerted on a charged particle travelling in a electromagnetic field. 
 \begin{equation}\label{eq:lorentz}
 \vec{F} = q\vec{E} + q\vec{v}\times\vec{B}
 \end{equation} 
 
 From Newton's second law of motion ($\vec{F} = m \vec{a}$) it is known that force and acceleration are
-proportional and parallel, thus the Lorentz force describes the acceleration of a charge in an electric and/or magnetic field. The first term of equation \ref{eq:lorentz} is also known as the Coulombic force, and shows that a charge is accelerated in the direction of an electric field. The second term shows that a moving charge is accelerated by the presence of a magnetic field in the direction that is both perpendicular to its movement and the magnetic field, given $\vec{v}$ and $\vec{B}$ are not parallel (in
-that case there is no acceleration).
+proportional and parallel, thus the Lorentz force describes the acceleration of a charge in an electric and/or magnetic field. The first term of equation \ref{eq:lorentz} is also known as the Coulombic force, and shows that a charge is accelerated in the direction of an electric field. The second term shows that a moving charge is accelerated by the presence of a magnetic field in the direction that is both perpendicular to its movement and the magnetic field, given that $\vec{v}$ and $\vec{B}$ are not parallel in which case there is no acceleration.
 
-According to classical electromagnetic theory the electric field associated to a monochromatic plane wave of strength $E_0$, wavelength $\lambda$, propagating in the z-direction (longitudinal direction) can be described by: 
+According to classical electromagnetic theory the electric field associated with a monochromatic plane wave of amplitude $E_0$, and wavelength $\lambda$, propagating in the z-direction can be described by: 
 
 \begin{equation}\label{eq:plane_wave}
 \vec{E_{in}} = E_0 e^{-2\,\pi\ i \frac{ c t }{\lambda}}
 \end{equation} 
 
-When the oscillating electric field of the incident EM wave hits a stationary electron of mass $m_e$ and charge $e$ (located at position $z = 0$), it exerts a Coulombic force on the electron which causes it to oscillate at the same frequency as the incident radiation. By Newton's second law of motion:
+When the oscillating electric field of the incident EM wave hits a stationary electron of mass $m_e$ and charge $e$ located at position $z = 0$, it exerts a Coulombic force on the electron which causes it to oscillate at the same frequency as the incident radiation. By Newton's second law of motion:
 
-\begin{equation}\label{eq:motion_single}
-\vec{F} = m_e \vec{a} = e E_0 e^{-2\,\pi\ i \frac{ c t}{\lambda}} 
-\end{equation}
+\begin{align}\label{eq:motion_single}
+\vec{F} = m_e \vec{a}(t) =& e E_0 e^{-2\,\pi\ i \frac{ c t}{\lambda}} \\
+\vec{a}(t) =& \frac{e\,E_0}{m} e^{-2\,\pi\ i \frac{c\,t}{\lambda}}
+\end{align}
 
-An accelerated charge emits electromagnetic radiation, since this is the only mechanism through which the electron can preserve momentum. The oscillating electron becomes a new source of radiation that radiates spherically in all directions, at the same frequency as the incident radiation. This phenomenon is called Thompson scattering. From Maxwell's equations it follows that the electric field generated by an accelerating electron measured at point $\vec{d}$  can be described as:
+Here we assumed the contribution of the magnetic part of field to be negligible, as the electron will not reach a significant velocity.
+An accelerated charge emits electromagnetic radiation. The oscillating electron becomes a new source of radiation that radiates spherically in all directions, at the same frequency as the incident radiation. From Maxwell's equations it follows that the electric field generated by an accelerating electron measured at point $\vec{d}$  can be described as []:
 
 \begin{equation}\label{eq:scattering}
-\vec{E_s}(\vec{d},t) = \frac{e a_\perp(t-|\vec{d}|/c)}{4 \pi \varepsilon_0c^2d}
+\vec{E_s}(\vec{d},t) = \frac{e a_\perp(t)}{4 \pi \varepsilon_0c^2d}
 \end{equation}
 
-$a_{\perp}$ is the acceleration projected on a plane perpendical to $\vec{d}$. Combining equations \ref{eq:plane_wave},\ref{eq:motion_single}, \ref{eq:scattering} we get that the instantaneous scattered field is:
-\begin{align*}
-a_\perp =& |\vec{a(t)}|\sin(\theta)\\
-E_s(\vec{d},t) =& \frac{{e}^2}{4 \pi \varepsilon_0 m_e\,c^2} \frac{E_0 \sin(\theta)}{d} e^{-2\,\pi\ i \frac{|\vec{d}|}{\lambda}}
-\end{align*}
+$a_{\perp}(t)$ is the acceleration projected on a plane perpendicular to $\vec{d}$. 
+\begin{equation}\label{eq:acceleration_perpendicular}
+a_\perp = |\vec{a(t)}|\sin(\theta)
+\end{equation}
+
+Combining equations \ref{eq:motion_single}, \ref{eq:scattering}, and \ref{eq:acceleration_perpendicular}, we get that the instantaneous scattered field is:
+\begin{equation}
+E_s(\vec{d},t) = \frac{{e}^2}{4 \pi \varepsilon_0 m_e\,c^2} \frac{E_0 \sin(\theta)}{d} e^{-2\,\pi\ i \frac{|\vec{d}|}{\lambda}}
+\end{equation}
 
 The classical electron radius $r_e$ can be used to simplify the equation for the scattered field $E_s$
 \begin{align*}
@@ -99,37 +106,37 @@ If more than one electron are present the scattered waves will interfere, simila
 \includegraphics[width=46mm]{Young_Diffraction2.png}
 \includegraphics[width=40mm]{blah.png}
 
-\caption{Illustration of scattering from two free-electrons A and B. a) graphic taken from Young, showing an interference pattern between two waves. b) mathematical description of the path length difference two waves arriving at point $\vec{d}$. $\vec{s_{in}}$ and $\vec{s_{out}}$ are unit vectors point in the direction of the incident wave and the out going wave. $\vec{r}$ is the position vector of point A, compared to point B. Note that in a) $x_0 = 0$.}
+\caption{Illustration of scattering from two free-electrons A and B. a) graphic taken from Young, showing an interference pattern between two waves. b) mathematical description of the path length difference between two waves arriving at point $\vec{d}$. $\vec{s_{in}}$ and $\vec{s_{out}}$ are vectors of legnth $1/\lambda$, pointing in the direction of the incident wave and the out going wave respectively. $\vec{r}$ is a position vector describing the distance from of point A to point B. Note that in a) $x_0 = 0$.}
 \end{figure}
 
-If the diffraction pattern is measured at point \(\vec{d}\), far away from the diffracting object itself, both scattered fields have approximately the same field strength as the distance from both electrons to the detector is about equal: $|\vec{d}+x_1| \approx |\vec{d}|$. This approximation is called the far-field approximation. The Fresnel number (FN) is used to verify the validity of the far-field approximation.
+If the diffraction pattern is measured at point \(\vec{d}\), far away from the diffracting object itself, both scattered fields have approximately the same field strength since the distance from both electrons to the detector is about equal. In Figure \ref{fig:Interference} this means that  $|\vec{d}+x_1| \approx |\vec{d}|$, and that both lines are parallel. This approximation is called the far-field approximation. The Fresnel number (FN) is used to verify the validity of the far-field approximation.
 \begin{equation} 
 FN = \frac{o^2}{d\lambda}
 \end{equation}
-$o$ is the object size, $d$ the distance from the
+where $o$ is the object size, $d$ the distance from the
 object to the detector, and \(\lambda\) the
 wavelength of the radiation. The far-field approximation is valid when $FN \ll 1$. All diffraction patterns discussed
 in this thesis are taken in the far-field. 
 
-The electric field at point $\vec{d}$ can be described by a sum of the scattered electric fields:
+The electric field at point $\vec{d}$ is given by a sum of the individual scattered electric fields:
 \begin{equation}
 E(\vec{d}) = E_s(\vec{d})+E_s(\vec{d}) e^{\frac{2 \pi\,i\,\Delta x}{\lambda}} 	 
 \end{equation}
-$\Delta x$ is the optical path difference between both scattered due to the relative difference in position. $\Delta x$ can also be described using the difference vector r: 
+$\Delta x$ is the optical path difference between the two scattered waves due to the relative difference in position. $\Delta x$ can be determined by summing $x_0$ which is the path difference of the incoming radiation and $x_1$ which is the path difference of the outgoing radiation. Both $x_0$ and $x_1$ can be described using the difference vector $\vec{r}$: 
 \begin{equation}
 \Delta x = x_0 - x_1 =\vec{s_{out}} \cdot \vec{r}-\vec{ s_{in}}\cdot \vec{r} = (\vec{s_{out}} -\vec{s_{in}} ) \cdot \vec{r} 
 \end{equation}
 
 By defining the scattering vector $\vec{S}$
 \begin{equation}
-\vec{S} = \frac{\vec{s_{out}}-\vec{s_{in}} }{\lambda}
+\vec{S} = \vec{s_{out}}-\vec{s_{in}}
 \end{equation}
 the diffraction pattern of two electrons will be :
 \begin{equation}
 E(\vec{d}) = E_s(\vec{d}) + E_s(\vec{d}) e^{2\,\pi\,  i\,\vec{S}\cdot\vec{r}}
 \end{equation}
 
-It is important to note is that $\Delta x $ is at most the distance between the two electrons $|\vec{r}|$. Abbe demonstrated that in order to resolve two electrons from each other at least two diffraction orders must be captured. This usually means the zeroth and the first order. The first order start where $\Delta x > \lambda/2$. For two electrons closer than half a wavelength apart this will never be the case. This sets a physical limit to the possible details one can resolve using a regular diffraction set-up. One would not be able to use green light ($\lambda = 500\,nm$) to image objects smaller than 250 nm. For structural studies of molecules this means that in order to distinguish single atoms, X-ray radiation is required.
+Important to note is that $\Delta x $ can be at most $|\vec{r}|$, the distance between the two electrons. Abbe demonstrated that in order to resolve two electrons from each other at least two diffraction orders must be captured. This usually means the zeroth and the first order. The first order start where $\Delta x > \lambda/2$. For two electrons closer than half a wavelength apart this will never be the case. This sets a physical limit to the possible details one can resolve using a regular diffraction set-up. One would not be able to use green light ($\lambda = 500\,nm$) to image objects smaller than 250 nm. For structural studies of molecules this means that in order to distinguish single atoms, X-ray radiation is required.
 
 
 \subsection{Scattering from multiple electrons}

@@ -3,11 +3,10 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: Thesis.aux
 The style file: plain.bst
 Database file #1: Thesis.bib
-Warning--I didn't find a database entry for "Chapman2011a"
 Warning--there's a number but no volume in Shannon1949
 You've used 92 entries,
             2118 wiz_defined-function locations,
-            1117 strings with 40677 characters,
+            1115 strings with 40653 characters,
 and the built_in function-call counts, 62053 in all, are:
 = -- 5069
 > -- 6487
@@ -46,4 +45,4 @@ warning$ -- 1
 while$ -- 314
 width$ -- 94
 write$ -- 1006
-(There were 2 warnings)
+(There was 1 warning)

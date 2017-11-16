@@ -12,7 +12,13 @@ In single particle imaging we do not measure the phases, and loose half of the i
 \section{Iterative Phase retrieval}
 In practice there are many ways of actually retrieving the phase information from the diffraction pattern, but most common phase retrieval techniques are variations of convex optimization algorithms. In this section the general idea behind convex optimization is explained.
 
-As can be seen in Figure oversampling in Fourier space implies that there is an area the size of ($l-o$) around the object for which we know the electron density is zero. This knowledge can be used as a constraint: we know that a correct choice of phases would make the corresponding $\rho(r)$ be zero in this area. The area that can contain positive electron density is called the support mask $M$. Furthermore, we know the recovered Fourier amplitudes should agree with the measured intensities. 
+As can be seen in Figure \ref{fig:sampling} oversampling in Fourier space implies that there is an area the size of ($l-o$) around the object for which we know the electron density is zero. This knowledge can be used as a constraint: we know that a correct choice of phases would make the corresponding $\rho(r)$ be zero in this area. The area that can contain positive electron density is called the support mask $M$. Furthermore, we know the recovered Fourier amplitudes should agree with the measured intensities. 
+\begin{figure}[h]
+	\centering 
+		\includegraphics[width=120mm]{sampling.png}
+	\caption{Illustration of critical sampling versus 		oversampling.}
+	\label{fig:sampling}
+\end{figure}
 
 An iterative approach can be designed to find the solution that minimizes the disagreement to both constraints:\\
 
@@ -102,10 +108,11 @@ EXPLAIN EIGENVALUES AND BASIS
 \subsection{Hierarchical clustering}
 To test whether the Fourier Error and Real space error are good measures to assess the variance between individual reconstructions, a clustering analysis can be performed. An example of such an analysis is UPGMA (Unweighted Pair Group Method with Arithmetic Mean) hierarchical clustering [Sokal, Michener]. This method checks the similarity between reconstructions by making pairwise pixel-to-pixel comparisons between all reconstructions. The similarity score is the normalized scalar product between a pair reconstructions after translating them to their optimal fit. We plot the similarity score of  each cluster as a function of the number of clusters and choose the agglomeration step where the plot makes a "kink". This is a standard way to estimate the number of clusters present in the set of reconstructions. This capability is an advantage of the UPGMA clustering algorithm. In a 2D plot of FE vs RE, color-coded by cluster, it is possible to see whether or not there is a correlation of reconstruction similarity and error score. An illustration of this method can be found in \ref{fig:UPGMA}
  
-\begin{figure}[h]\label{fig:UPGMA}
-\centering 
-\includegraphics[width=40mm]{UPGMA_Clustering.jpg}
-\caption{UPGMA Clustering.}
+\begin{figure}[h]
+	\centering 
+		\includegraphics[width=100mm]{UPGMA_Clustering.jpg}
+	\caption{UPGMA Clustering.}
+	\label{fig:UPGMA}
 \end{figure}
 
 In the case that several large clusters remaining after applying a real-space error and Fourier-error threshold the clusters have to be examined carefully. If the remaining clusters correlate with the errors we suggest to keep only the cluster with the lowest error. If no correlation is present between score and cluster it is advised to keep all clusters for further evaluation. Otherwise there is a possibility of selecting on similarity, which would negate the validation power of the PRTF.
