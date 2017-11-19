@@ -2,17 +2,8 @@
 The problem of missing phase information is well known and is called the phase problem. There are many ways to overcome it: for example in crystallography homology modelling or the anomalous scattering of heavy atoms is exploited to retrieve phases. Holography uses the interference between two wave fields to obtain the phases. Ptychography uses the precisely known overlap and high redundancy between many exposures to solve the phase problem. CXI makes use of the fact that pnCCD detectors so-called oversample the diffraction pattern, which means that phases can under certain conditions be retrieved from the intensity pattern itself. The next sections will describe oversampling in more detail, explain how phases can be retrieved from an oversampled signal using an iterative phase retrieval method, and finally how phase retrieval can be validated. 
 
 \section{Oversampling} 
-In 1952 Sayre noticed that the Bragg peaks sample the molecular transform $\mathcal{F}(H)$ at the critical sampling rate ($S_C$)\cite{Sayre1952a} (See Shannon \cite{Shannon1949a}). This means that knowing the phases belonging to the Bragg peaks is just enough to back-calculate the structure of the measured object. Single particle imaging is free from the crystal lattice, thus isolated Bragg peaks give way to a continuous diffraction pattern. By choosing the detector distance appropriately such that individual pixels cover a small enough angle, we can sample the molecular transform more finely than the critical sampling rate. This sampling condition is called oversampling. The sampling rate $S$ is determined by the wavelength $\lambda$, the detector distance $d$ the pixel size $p$, and the size of the object. 
-\begin{equation}
-S = \frac{\lambda\,d}{s\,p}
-\end{equation}
+In 1952 Sayre noticed that the Bragg peaks sample the molecular transform $\mathcal{F}(H)$ at the critical sampling rate ($S_C$)\cite{Sayre1952a} (See Shannon \cite{Shannon1949a}). This means that knowing the phases belonging to the Bragg peaks is just enough to back-calculate the structure of the measured object. Single particle imaging is free from the crystal lattice, and isolated Bragg peaks give way to a continuous diffraction pattern. By choosing the detector distance appropriately such that individual pixels cover a small enough angle, we can sample the molecular transform more finely than the critical sampling rate. This sampling condition is called oversampling. Figure \ref{fig:sampling} illustrates both cases of sampling. 
 
-In single particle imaging we do not measure the phases, and loose half of the information necessary to determine the molecular transform at the sampling point. By choosing a detector setup such that the sampling rate is at least twice the critical sampling rate we can use the additional intensity information to recover the phases. It would thus be possible reconstruct the object from the measured intensities alone. Oversampling is the basis of many phase retrieval techniques in SPI, as well as some clever phasing techniques in SFX \cite{Ayyer2016,Chapman2011}.
-
-\section{Iterative Phase retrieval}
-In practice there are many ways of actually retrieving the phase information from the diffraction pattern, but most common phase retrieval techniques are variations of convex optimization algorithms. In this section the general idea behind convex optimization is explained.
-
-As can be seen in Figure \ref{fig:sampling} oversampling in Fourier space implies that there is an area the size of ($l-o$) around the object for which we know the electron density is zero. This knowledge can be used as a constraint: we know that a correct choice of phases would make the corresponding $\rho(r)$ be zero in this area. The area that can contain positive electron density is called the support mask $M$. Furthermore, we know the recovered Fourier amplitudes should agree with the measured intensities. 
 \begin{figure}[h]
 	\centering 
 		\includegraphics[width=120mm]{sampling.png}
@@ -20,29 +11,54 @@ As can be seen in Figure \ref{fig:sampling} oversampling in Fourier space implie
 	\label{fig:sampling}
 \end{figure}
 
-An iterative approach can be designed to find the solution that minimizes the disagreement to both constraints:\\
+The linear sampling rate $S$ is defined as the ratio of $l/o$, where $l$ is the window size, and $o$ is the object size. Due to the inverse relation between the object and the molecular transform $l = \frac{1}{q} = \frac{\lambda\, d}{p}$, where $q$ is a 'pixel' in F(S) (see equation \ref{eq:q}. 
+\begin{equation}
+S = \frac{\lambda\,d}{o\,p}
+\end{equation}
 
+Figure \ref{fig:sampling} illustrates two types of sampling: critical sampling, and oversampling.
 
+\begin{figure}[h]
+	\centering 
+		\includegraphics[width=120mm]{sampling.png}
+	\caption{Illustration of critical sampling versus 		oversampling.}
+	\label{fig:sampling}
+\end{figure}
+
+By choosing a detector setup such that the sampling rate is at least twice the critical sampling rate we can, in some cases, use the additional intensity information to recover the phases, and thus reconstruct the object from the measured intensities alone. It is known that this method does often does have multiple solutions in 1D \cite{Walther1963}, however, for higher dimensions it has been proven that, in most cases, an oversampled pattern will have a unique solution\cite{Bruck1979}. Oversampling is the basis of many phase retrieval techniques in SPI, as well as some clever phasing techniques in SFX \cite{Ayyer2016,Chapman2011}.
+
+\section{Iterative Phase retrieval}
+In practice there are many ways of actually retrieving the phase information from the diffraction pattern, but most common phase retrieval techniques are variations of convex optimization algorithms. This section introduces the general idea behind convex optimization, and explains the working three different algorithms. It has to be appreciated that solving the phases problem in remarkably difficult, as it is neither linear nor convex.
+
+As with any difficult problem, one starts from the things that are known. Figure \ref{fig:sampling} shows that oversampling in Fourier space implies that there is an area the size of ($l-o$) around the object for which we know the electron density $\rho(\vec{r})$ is zero. This knowledge can be used as a constraint on the possible phases: we know that a correct choice of phases would make the corresponding $\rho(r)$ be zero in this area. The area that can contain positive electron density is called the support mask $M(\vec{r})$. This constraint is called the real-space constraint. Furthermore, we know that the recovered Fourier amplitudes should agree with the measured intensities. This is called the Fourier-space constraint. 
+
+In 1978 Fienup \cite{Fienup1978}, inspired by an earlier algorithm by Gerchberg and Saxton [Gerchberg1972], introduced an algorithm called Error Reduction (ER) to solve the phase problem. ER is an iterative approach that tries to find the solution that minimizes the disagreement to both the real-space constraint and the Fourier constraint. In words it can be described as follows:\\
 \begin{enumerate}
 \item Assign random phases to each pixel.
 \item Inverse Fourier transform F(s).
 \item Set all electron density outside of $M$ to zero, keep other electron density.
 \item Fourier transform $\rho(r)$
 \item Make sure that the recovered amplitudes match the measured intensities. Keep the phases.
-\item Go back to step 2.
+\item Go back to step 2.\\
 \end{enumerate}
 
-A way to formally write down these steps is found in  constraint of step 3 and 5 can be found in equation \ref{eq:ER}.
 
-%\begin{equation}
+ER is sometimes able to find the correct solution, but because the problem is not convex, in general it often gets stuck in local minima, making ER unable to find the global solution.
+
+In 1984 Levi and Stark realized that applying the above described constraints can be interpreted as projections in a multidimensional Hilbert space \cite{Stark1984}. Step 3 will from now on will be called the real-space projection $P_r$. A combination of step 4,5 and 2 will be called the Fourier Projection $P_f$.  In ER $P_r$ and $P_f$ can be defined as follows:
 \begin{align}\label{eq:ER}
 P_r \rho\left(\vec{r}\right) =& \begin{cases} \rho\left(\vec{r}\right) \quad &\mathrm{if}\,\,
-    \vec{r} \in S\\0 \quad & \mathrm{if}\,\, \vec{r} \not\in S \end{cases}\\
+    \vec{r} \in M\\0 \quad & \mathrm{if}\,\, \vec{r} \not\in M \end{cases}\\
 P_f \rho(\vec{r}) =& \mathcal{F}^{-1}\left( \frac{\sqrt{I}}{|\mathcal{F}(\rho(\vec{r}))|}\mathcal{F}(\rho(\vec{r})) \right)
 \end{align}
-%\end{equation}
 
-Two error metrics can be associated with both constraints; the fourier error ($E_f$) and the real space error ($E_r$). $E_f$ and $E_r$ are defined as:
+The largest difference between both projections is that the support constraint is convex, while the Fourier constraint is not. An iteration in ER can now been seen as a real-space projection followed by a Fourier projection. This can be summarized as:
+\begin{equation}
+\rho_{n+1}\left(\vec{r}\right) = \begin{cases} P_f\rho_{n}\left(\vec{r}\right) \quad &\mathrm{if}\,\,
+    \vec{r} \in M\\0 \quad & \mathrm{if}\,\, \vec{r} \not\in M \end{cases}
+\end{equation}
+
+Two error metrics can be associated with both projection;the fourier error ($E_f$) and the real space error ($E_r$). $E_r$ is the fraction of density outside the support. $E_f$ shows the difference between the recovered amplitudes and the square root of the intensities. Mathematically $E_f$ and $E_r$ are defined as:
 
 \begin{equation}
 E_r = \left|P_r\rho(\vec{r}) - \rho(\vec{r})\right| = \left(\sum_i\rho_i^2\right)^{\frac{1}{2}}
@@ -51,24 +67,28 @@ E_r = \left|P_r\rho(\vec{r}) - \rho(\vec{r})\right| = \left(\sum_i\rho_i^2\right
 \begin{equation}
 E_f = \left|P_f\rho(\vec{r}) - \rho(\vec{r})\right| = \left(\sum_{i}\left(\frac{\sqrt{I_i}}{|F(S_i)|}- F(S_i)\right)\right)^{\frac{1}{2}}
 \end{equation}
-
-\subsection{Error Reduction}
-Convex optimization assumes that hyperplane of all possible solutions that forfill to one of the constraints is convex. A most straightforward implementation of the above-described algorithm is Error Reduction, invented Fienup based on algorithm by Gerchberg, Saxton. would in this case be enough to retrieve the true solution.  
-
-\subsection{HIO}
-It has been shown that the solution set that for fills the support constraint is convex. Due to noise and missing data our solution set however are often not convex, which means that there are multiple (local) minima. In this case ER will likely not find the global minimum or true solution. Other algorithms had to be invented. Historically an algorithm named HIO was one of the first that can escape from local minima. This is achieved by slightly adjusting step 3.
-
+  
+\subsection{The Hybrid Input Output algorithm (HIO)}
+In 1982 Fienup introduced an algorithm that can escape from local minima, the so-called the Hybrid Input Output algorithm (HIO). To achieve this HIO makes use of a so called relaxation parameter $\beta$. An iteration in HIO can be described as follows:
 \begin{align}
-P_r \rho\left(\vec{r}\right) =& \begin{cases} \rho\left(\vec{r}\right) \quad &\mathrm{if}\,\,
-    \vec{r} \in S\\\rho(\vec{r}) -\beta P_f \rho(\vec{r}) \quad & \mathrm{if}\,\, \vec{r} \not\in S \end{cases}
+\rho_{n+1}\left(\vec{r}\right) = \begin{cases} P_f \rho_{n}\left(\vec{r}\right) \quad &\mathrm{if}\,\,
+    \vec{r} \in M\\\rho_n(\vec{r}) -\beta P_f \rho_n(\vec{r}) \quad & \mathrm{if}\,\, \vec{r} \not\in M \end{cases}
 \end{align}
- 
 
-\subsection{RAAR}
-Another algorithm that is often used is Relaxed A
-Raar 
+I see the $\beta$ parameter similar to temperature in simulated annealing. If $\beta$ is large even deep local minima can be escaped. Unfortunately this also means the global minima might be missed as well. If beta is small HIO will miss fewer minima, but will have greater difficulty escaping from them. As long as a minimum is not perfect ($E_r$ and $E_f$ are not both zero), HIO will, however, eventually be able to escape \cite{Martin2010}.
 
-Other algorithms that are often used for Phase retrieval are diffusion map (DM), GHIO, .
+\subsection{The Relaxed Averaged Alternating Reflection algorithm (RAAR)}
+Another algorithm that is used often in the work described in this thesis is the Relaxed Averaged Alternating Reflection algorithm (RAAR). RAAR does not escape all minima but it can escape shallower once. For high-quality data RAAR seems to find the solution quicker than HIO, and also in a more behaved manner. An iteration of RAAR can be described as follows:
+\begin{align}
+\rho_{n+1}\left(\vec{r}\right) = \begin{cases} P_f \rho_{n}\left(\vec{r}\right) \quad & \mathrm{if} \,\,
+    \vec{r} \in M\,\mathrm{and}\,\rho_n(\vec{r}) \geq -(1+\beta)P_f\rho_n(\vec{r}) \\\
+    \beta\,\rho_n(\vec{r}) -(1-2\beta) P_f \rho_n(\vec{r}) \quad & \mathrm{if}\,\, \mathrm{otherwise} \end{cases}
+\end{align}
+
+As both RAAR and HIO do not guarantee to end up in the bottom of a minimum, concluding phase recovery with a number of iteration of ER will ensure the bottom of the final minimum is found. This can improve the overall quality of the reconstruction, as shown in \textbf{Paper I}.
+
+\subsection{Other algorithms}
+There exist many other phase recovery algorithms. Examples are: diffusion map (DM) \cite{Elser}, GHIO[], HPR [], HAAR[] , ESPRESSO [], saddepoint optimisation [], and charge flipping []. A software package called Hawk allows users to select and test different algorithms. Hawk is especially powerful as it gives graphical feedback of the reconstruction process. This can for example be very useful to find the correct support size. 
 
 \section{Validation}
 In iterative phase retrieval every reconstruction results in an image, irrespective of it having biological relevance or not. It is therefore very important to have tools to validate a reconstruction. This section will describe different validation tools used in the field.

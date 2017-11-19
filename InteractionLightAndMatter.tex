@@ -45,13 +45,13 @@ In the first equality we used equation \ref{eq:maxlaw3}. In the second equality 
 \frac{d^2\vec{E}}{dt^2} = \frac{1}{\mu_0\varepsilon_0}\nabla^2 \vec{E} = v^2 \nabla^2 \vec{E},      v = \frac{1}{\sqrt{\mu_0\varepsilon_0}}
 \end{equation}
 
-Equation \ref{eq:wave_eq} is known as the wave equation, which is used to describe the propagation of a wave with the speed $v$. Combining this results with the experimentally determined value for $\mu_0$ and $\varepsilon_0$ shows that electromagnetic (EM) waves travel at \(3\cdot 10^8 \frac{m}{s}\), which agreed with value of the speed of light \cite{Froome1971}. This result strongly hints at the possibility that light is an electromagnetic wave. Further experiments succeeded in demonstrating the existence of electromagnetic waves with long wavelengths and showed that their properties are consistent with the properties of visible light, including their velocity. Visible light has now become part of the broader spectrum of electromagnetic radiation. Although Quantum Mechanics complicated the description of light further, as light can demonstrate particle-like behaviour under certain conditions. Many phenomena however can be described by treating light as a wave. 
+Equation \ref{eq:wave_eq} is known as the wave equation, which is used to describe the propagation of a wave with the speed $v$. Combining this results with the experimentally determined value for $\mu_0$ and $\varepsilon_0$ shows that electromagnetic (EM) waves travel at \(3\cdot 10^8 \frac{m}{s}\), which agreed with value of the speed of light \cite{Froome1971}. This result strongly hints at the possibility that light is an electromagnetic wave. Further experiments succeeded in demonstrating the existence of electromagnetic waves with long wavelengths and showed that their properties are consistent with the properties of visible light, including their velocity. Visible light has now become part of the broader spectrum of electromagnetic radiation. Although Quantum Mechanics complicated the description of light further, as light demonstrates particle-like behaviour under certain conditions. Many phenomena however can be described by treating light as a wave. 
 
 \section{Photon-material interactions}
 Assuming that light is electromagnetic radiation, it is easy to understand that a change in electric field will affect its propagation. There are four mechanisms through which radiation interacts with matter: photoabsorption, scattering, photo-nuclear absorption and pair production. The description of these phenomena will treat as if light will come in discrete quanta: photons. 
 Photonuclear absorption and pair production only occur when matter is exposed to high energy gamma rays, and are therefore of little relevance to this thesis. Photoabsorption is facilitated primarily through a process called photoexcitation, in which an electron is excited to a higher level of energy, or possibly ionized in the case of photoionisation. Scattering can be divided into two classes: elastic scattering and inelastic scattering. Elastic scattering does not result in a change of kinetic energy of the scattering particle, nor does it change the wavelength of the radiation. Only the direction of the radiation can be changed. Inelastic scattering leads to both a change in wavelength of the radiation, and a change in kinetic energy. Photo-absorption and inelastic scattering deposit energy into the object which will lead to structural changes of the object. Elastic scattering on the other hand can be used to gain structural information about the object, without causing damage to the object. 
 
-\subsection{Scattering by a single free electron}
+\section{Scattering by a single free electron}
 The simplest example of elastic scattering is Thompson scattering from a free electron. A free electron will scatter or diffract the incoming radiation in all directions. An important physical concept for understanding scattering on a deeper level is the Lorentz force which describes the force exerted on a charged particle travelling in a electromagnetic field. 
 \begin{equation}\label{eq:lorentz}
 \vec{F} = q\vec{E} + q\vec{v}\times\vec{B}
@@ -97,15 +97,15 @@ r_e =& \frac{e^2}{4 \pi \varepsilon_0 m_e\,c^2}
 \end{align*}
 
 
-\subsection{Two-body scattering}
+\section{Two-body scattering}
 %\subsection{Approximations} 
 If more than one electron are present the scattered waves will interfere, similar to the interference of water waves. The resulting pattern of dark and light bands is called a diffraction pattern. The first person to report this phenomenon was Grimaldi in 1660. Whether the interference is constructive of destructive depends on the optical path difference (OPD) between the scattered waves. Waves with path differences close to integer numbers of wavelengths interfere constructively, if close to half integral waves will interfere destructively. The central light band is often referred to as the zeroth diffraction order, or more colloquially as the central speckle. The light band next to it is called the first diffraction order (or first fringe), the one next to that the second order and so on. These terms will be used throughout the thesis. Figure \ref{fig:Interference} illustrates the phenomenon of interference.
 
-\begin{figure}[h]\label{fig:Interference}
+\begin{figure}[h]
 \centering 
 \includegraphics[width=46mm]{Young_Diffraction2.png}
 \includegraphics[width=40mm]{blah.png}
-
+\label{fig:Interference}
 \caption{Illustration of scattering from two free-electrons A and B. a) graphic taken from Young, showing an interference pattern between two waves. b) mathematical description of the path length difference between two waves arriving at point $\vec{d}$. $\vec{s_{in}}$ and $\vec{s_{out}}$ are vectors of legnth $1/\lambda$, pointing in the direction of the incident wave and the out going wave respectively. $\vec{r}$ is a position vector describing the distance from of point A to point B. Note that in a) $x_0 = 0$.}
 \end{figure}
 
@@ -128,7 +128,7 @@ $\Delta x$ is the optical path difference between the two scattered waves due to
 \end{equation}
 
 By defining the scattering vector $\vec{S}$
-\begin{equation}
+\begin{equation}\label{eq:ScatteringVector}
 \vec{S} = \vec{s_{out}}-\vec{s_{in}}
 \end{equation}
 the diffraction pattern of two electrons will be :
@@ -136,33 +136,84 @@ the diffraction pattern of two electrons will be :
 E(\vec{d}) = E_s(\vec{d}) + E_s(\vec{d}) e^{2\,\pi\,  i\,\vec{S}\cdot\vec{r}}
 \end{equation}
 
+Implicit in this interpretation is the assumption that the scattered field will not be scattered a second time. This approximation is called the first Born approximation. We assume this to be valid for all objects smaller than a few micrometers.
+
 Important to note is that $\Delta x $ can be at most $|\vec{r}|$, the distance between the two electrons. Abbe demonstrated that in order to resolve two electrons from each other at least two diffraction orders must be captured. This usually means the zeroth and the first order. The first order start where $\Delta x > \lambda/2$. For two electrons closer than half a wavelength apart this will never be the case. This sets a physical limit to the possible details one can resolve using a regular diffraction set-up. One would not be able to use green light ($\lambda = 500\,nm$) to image objects smaller than 250 nm. For structural studies of molecules this means that in order to distinguish single atoms, X-ray radiation is required.
 
-
-\subsection{Scattering from multiple electrons}
-In biological particles the incoming EM radiation is scattered by many electrons. The electric field can be described as the sum of all the individual scattered fields.
+\section{Scattering from multiple electrons}
+The framework for describing the scattering of two electrons can easily be extended to N electrons, considering that every electron scatters independently from the others. The electric field can be described as the sum of all the individual scattered fields.
 \begin{equation}\label{eq:boehoe}
 E(\vec{d}) = E_s(\vec{d}) \sum_{n} e^{2\,\pi\,  i\,\vec{S}\cdot\vec{r_n}}
 \end{equation}
+where n identifies the individual electrons.
+
+In biological particles the incoming EM radiation is scattered by electrons that are part of atoms, instead of being scattered by free electrons. As we will see, this has a major effect on the scattering process. The scattering potential $\rho(\vec{r},\lambda)$ describes the scattering from a single atom in comparison to the scattering by a free electron.
+
+\begin{equation}
+\rho(\vec{r},\lambda) = \frac{r_e N \lambda^2}{4 \pi} (f_1(\lambda)+i f_2(\lambda))^2 - r_e N (f_i(\lambda)+i f_2(\lambda) ) 
+\end{equation}
+Here, $r_e$ is the classical electron radius, $N$ are the number of electrons in an atom, and $f = f_1+ i f_2$ is the atom specific scattering factor. The imaginary part of $f$, $f_2$, is derived from the atomic photoabsorption cross section and is a measure of absorption [booklet]. $f_2$ becomes very relevant close to an absorption edge of the material. The real part of the scattering factor, $f_1$, describes the scattering power of an atom. It is related to the imaginary part by the Kramers-Kronig dispersion relation [Kramers]. At high photon energies $f_1$ approaches the atomic number of atom.  
+
+For most elements, the exact value of $f_1$ and $f_2$ have been determined experimentally for a wide range of photon-energies \cite{Henke1990}. Figure \ref{fig:waterwindow} presents the scattering factors of two elements: carbon and oxygen. The gray energy range from 282-533 eV (4.40 nm - 2.33 nm) is called the water window. In this region, and especially towards the end, oxygen atoms (thus water) are scattering significantly less than carbon atoms (i.e. organic biomolecules). The water window therefore a good candidate for imaging cells, as the contrast between two of their main constituents, water and biomolecules, is enhanced.
+
+\begin{figure}[h]
+\centering 
+\includegraphics[width=80mm]{waterwindow.png}
+\label{fig:waterwindow}
+\caption{Atomic scattering factors $f_1$ and $f_2$ of carbon and oxygen, as a function of photon-energy of the X-ray radiation. The region between the absorption K-edge of carbon (282 eV, 4.40 nm) and the K-edge of oxygen (533 eV, 2.33 nm) is called the water window.  The contrast between biomolecules and water is enhanced in this region, especially towards the high end of it. These wavelengths could be used for imaging living biological particles such as cells or organelles.}
+\end{figure}
+
+The scattered field can now be described as follows:
+
+\begin{equation}\label{eq:boehoe}
+E(\vec{d}) = E_s(\vec{d}) \sum_{m} \rho(\lambda,\vec{r}) e^{2\,\pi\,  i\,\vec{S}\cdot\vec{r_m}}
+\end{equation}
+where m denoted the different atoms.
 
 If all electrons together are assumed to form a continuous electric charge density around the many nuclei that constitute the biological particle, equation \ref{eq:boehoe}  can be written as a continuous function. 
+
 \begin{equation}\label{eq:cont}
 E(\vec{d}) = E_s(\vec{d})\int \rho(\vec{r},\lambda) \exp^{-2\pi i \,\vec{S} \cdot \vec{r}}\,d\vec{r}
 \end{equation}
 
-$\rho(\vec{r},\lambda)$ is named the scattering potential and takes the scattering strength of each nucleus into consideration. 
-
-So far we have implicitly assumed that the scattered field will not be scattered a second time. This approximation is called the first Born approximation. We assume this to be valid for all objects smaller than a few micrometers.
-
 We can now introduce the scattering factor $F(\vec{S})$.
 \begin{equation}
-F(\vec{S}) = \frac{E(\vec{d})}{E_s(\vec{d})} = F(\frac{\vec{d}}{|d|}
+F\left(\vec{S}\right) = \frac{E(\vec{d})}{E_s(\vec{d})} = F\left(\frac{\vec{d}}{|d|}\right)
 \end{equation}
-The structure factor is independent of the distance of the detector, it only depends on the angle of measurement. Equation \ref{eq:cont} can be rewritten as:
+The structure factor is independent of the distance of the detector, it only depends on the angle of measurement. Instead of structure factor, the term molecular transform is often used in the field of crystallography. Throughout this thesis we will use this term as well.
+
+Equation \ref{eq:cont} can be rewritten as:
 \begin{equation}\label{eq:diff_equation}
 F(\vec{S}) = \int \rho(\vec{r},\lambda) \exp^{-2\pi i \,\vec{S} \cdot \vec{r}}\,d\vec{r}
 \end{equation}
-This equation shows that a diffraction experiment is simply the 3D Fourier transform of the electron density evaluated at $\vec{S}$. This relation is very convenient as there is a large mathematical field describing the relations of Fourier transformations. A few of these relations are very useful to this thesis.
+
+This equation is very similar to a well known Fourier transformation []. We can now also define the inverse relation of \ref{eq:diff_equation}:
+\begin{equation}
+\rho(\vec{r}) = \int F(S) \exp^{2\pi i \,\vec{S} \cdot \vec{r}}\,d\vec{S}
+\end{equation}
+
+Equation \ref{eq:diff_equation} is very convenient as we now know that, in the far-field, the scattering of a plane wave is proportional to the Fourier transform of the scattering potential evaluated at $\vec{S}$.
+
+\section{the Ewald Sphere}
+
+The molecular transform $F(\vec{S})$ of a three-dimensional object is also three-dimensional. A diffraction pattern, however, is not. To understand this, we have to evaluate $\vec{S}$ more carefully. 
+
+In a diffraction experiment $\vec{S} = \vec{s}_{out} -\vec{s}_{in}$ (see equation \ref{eq:ScatteringVector},). $\vec{s}_{in}$ is constant, and is determined by the propagation direction of the incoming EM field. $\vec{s}_{out}$ has a fixed length ($1/\lambda$), and points in the direction of the scattered field ($\theta$). The scattering vector $\vec{S}$ is therefore limited to reside on the surface of a sphere of radius $1/\lambda$. This sphere is called the Ewald sphere [] (see Figure \ref{fig:EwaldSphere}). 
+
+\begin{figure}[h]
+	\centering 
+	\includegraphics[width=50mm]{ewald_sphere.png}
+	\label{fig:EwaldSphere}
+	\caption{A schematic of the Ewald sphere. The scattering vector $\vec{S}$ will always reside on the surface of a sphere of length $1/\lambda$, that intersects with the origin of the three-dimensional molecular transform of the object. $\vec{S} = \vec{s}_{in} - \vec{s}_{out}$. $\vec{s}_{in}$ is constant and is determined by the direction of the incoming radiation. $\vec{s}_{out}$ has a constant length, but varies in direction with scattering angle $\theta$. }
+\end{figure}
+
+The Ewald sphere intersects the $F(S)$ through its center $F(0)$. At small scattering angles this means that the curved diffraction pattern can be approximated as a Euclidean slice through the center of the molecular transform.  This relation will prove itself to be very useful.
+
+$F(\vec{S})$ is independent from detector distance $d$, while a diffraction pattern is not. The relative scaling factor between the two is $\frac{1}{\lambda\,d}$. This means that the area covered by a pixel of size $p$ on the detector covers an area of size $q = \frac{p}{\lambda \, d}$ of the Ewald sphere (given the small angle approximation holds). 
+
+
+\section{Useful Fourier relations}
+There is a large mathematical field describing the relation of Fourier transformations. A few of these relations are very useful to this thesis.
 
 The Fourier shift theorem describes the change in the diffraction pattern upon object translation (i.e. shift).
 \begin{equation}
@@ -175,38 +226,11 @@ The Convolution theorem states that a multiplication in Fourier space is a convo
 f(x) * g(x) = \int f(\tau)g(x-\tau)\,d\tau = \mathcal{F}^{-1} {\mathcal{F}f(x)\times\mathcal{F}g(x)}
 \end{equation}
 
-The Fourier slice theorem states that a 2D diffraction pattern is a slice through the center of the 3D fourier transform of the object.
-It has thus become possible to move between diffraction pattern and electron density.
-
-
-\subsection{Scattering Potential}
-An important term in equation that needs further development is the scattering potential of a material $\rho(\vec{r},\lambda)$. Mathematically $\rho(\vec{r},\lambda)$ can be formulated as a function of the refractive index $n$ of a material.
-\begin{equation}
-\rho(\vec{r},\lambda) = \pi s_{in}^2 (( n(\vec{r},\lambda))^2 -1))
-\end{equation}
-$s = \frac{1}{\lambda}$
-
-The refractive index is related to the scattering factors of the individual atoms in the material.
-\begin{equation}
-n = 1-\frac{r_e}{2\pi} \lambda^{2} \sum_{i} N_i f_i(0)
-\end{equation}
-where $r_e$ is the classical electron radius, $\lambda$ is the wavelength, $N_i$ is the number of atoms per unit volume. The complex scattering factor in the forward direction $f(0)$ can be described by: 
-\begin{equation}
-f(0) = f_1 + i f_2
-\end{equation}
-The imaginary part is derived from the atomic photoabsorption cross section and is a measure of absorption [booklet]. The real part is related to the imaginary part using the Kramers-Kronig dispersion relation [Kramers]. At high photon energies $f_1$ approaches the atomic number of the atoms. The exact value of $f_1$ and $f_2$ at different photon-energies have been determined experimentally [Henke]. 
-
-Figure \ref{fig:waterwindow} presents the scattering factors of two elements: carbon and oxygen. The gray energy range from 282-533 eV (4.40 nm - 2.33 nm) is called the water window. In this region, and especially towards the end, oxygen atoms (thus water) are scattering significantly less than carbon atoms (i.e. organic biomolecules). The water window therefore a good candidate for imaging cells, as the contrast between two of their main constituents, water and biomolecules, is enhanced.
-
-\begin{figure}[h]\label{fig:waterwindow}
-\centering 
-\includegraphics[width=80mm]{waterwindow.png}
-
-\caption{Atomic scattering factors $f_1$ and $f_2$ of carbon and oxygen, as a function of photon-energy of the X-ray radiation. The region between the absorption K-edge of carbon (282 eV, 4.40 nm) and the K-edge of oxygen (533 eV, 2.33 nm) is called the water window.  The contrast between biomolecules and water is enhanced in this region, especially towards the high end of it. These wavelengths could be used for imaging living biological particles such as cells or organelles.}
-\end{figure}
+The projection slice theorem states that the Fourier transform of the projection of an three-dimensional function f(r) onto an two-dimensional plane is equal to an two-dimensional slice through the origin of the three-dimensional Fourier transform of the function f(r)
+which is parallel to the projection plane. At small scattering angles, a diffraction pattern is a slice through the center of the three-dimensional Fourier transform. In this case the results of equation can be interpreted as a projection of the scattering potential. 
 
 \section{Radiation Damage}
-The previous section shows that scattering power of an body is related to the wavelength of the radiation. The shorter the wavelength the less scattering occurs. To compensate for this loss in signal, the required dose for imaging increases. Practically this means that a dose in excess of 100 MGy is required to record an interpretable signal from a living cell (a dose of 2000 Gy is already enough to kill everything that lives on earth). Unfortunately other processes of matter-radiation interaction become more abundant as well. At soft X-ray wavelengths the predominant damage process is photoionisation. Many process follow the ionization, of which non-radiative Auger decay will lead to significant radiation damage. The relation between the required dose of radiation versus the maximum tolerable dose of radiation posed a physical limit to the obtained resolution for imaging single biomolecules [Howell].
+The scattering power of an body is related to the wavelength of the radiation. The shorter the wavelength the less scattering occurs. To compensate for this loss in signal, the required dose for imaging increases. Practically this means that a dose in excess of 100 MGy is required to record an interpretable signal from a living cell (a dose of 2000 Gy is already enough to kill everything that lives on earth). Unfortunately other processes of matter-radiation interaction become more abundant as well. At soft X-ray wavelengths the predominant damage process is photoionisation. Many process follow the ionization, of which non-radiative Auger decay will lead to significant radiation damage. The relation between the required dose of radiation versus the maximum tolerable dose of radiation posed a physical limit to the obtained resolution for imaging single biomolecules [Howell].
 
 \section{Diffract-before-destroy}
 An elegant solution to the problem of radiation damage came from the realization that elastic scattering occurs on a  time scale shorter than the damage processes manifest themselves structurally. This principle is of diffract-before-destroy, suggested in 2000 by Neutze et al [], was experimentally demonstrated on a silicon-nitrate sample [Chapman]. This experiment used the ultra short and extremely bright pulses from the first x-ray free-electron laser to outrun key damage processes. Although the pulse literally obliterated the sample, enough structural information was captured to retrieve the original structure. A single XFEL pulse has a power densities of $10^16 W/cm^2$, and can be between 1-100 fs long. This facilitates the imaging of single particles at room temperature.
