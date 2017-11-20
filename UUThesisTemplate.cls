@@ -989,6 +989,7 @@
 
 \renewcommand{\bibname}{\refname}
 \providecommand{\listofpapersname}{List of papers}
+\providecommand{\listofsupportingpapersname}{Supporting papers}
 \providecommand{\continuednextpage}{Continued on next page}
 \providecommand{\keywordsname}{Keywords}
 
@@ -996,7 +997,10 @@
 \providecommand{\listofpapersoutro}[1]{\gdef\@listofpapersoutro{#1}}
 \listofpapersintro{This thesis is based on the following papers, which are referred to in the text by their roman numerals.}% 
 \listofpapersoutro{Reprints were made with permission from the publishers.}
-
+\providecommand{\listofsupportingpapersintro}[1]{\gdef\@listofsupportingpapersintro{#1}}
+\providecommand{\listofsupportingpapersoutro}[1]{\gdef\@listofsupportingpapersoutro{#1}}
+\listofsupportingpapersintro{}
+\listofsupportingpapersoutro{}
 
 \providecommand{\pgs@language@swedish}{%
 	\renewcommand{\bibname}{\refname}%
@@ -1053,6 +1057,28 @@
 }{%
     \end{list}\nopagebreak%
     \vspace{1\baselineskip}\noindent {\@listofpapersoutro}%
+}
+
+\newcounter{listofsuppapersc}
+\newenvironment{listofsupportingpapers}{%
+        \cleardoublepage%
+        \@ifundefined{pdfbookmark}{}{\pdfbookmark[0]{\listofsupportingpapersname}{lop}}%
+        \chapter*{\listofsupportingpapersname}%
+        \noindent {\@listofsupportingpapersintro}\vspace{1\baselineskip}%
+        %\setcounter{listofsuppapersc}{3}%
+    %\begin{list}{\Roman{listofsuppapersc}}{%
+    %   \usecounter{listofsuppapersc}%
+    \begin{list}{\Roman{listofsuppapersc}}{
+        \usecounter{listofsuppapersc}
+        \setcounter{listofsuppapersc}{\arabic{listofpapersc}}%
+           \setlength{\leftmargin}{2,5em}%
+            \setlength{\labelsep}{1em}%
+            \setlength{\itemsep}{0mm}%
+            \setlength{\parsep}{0mm}%
+            \setlength{\topsep}{0mm}}%
+}{%
+    \end{list}%
+    \vspace{1\baselineskip}\noindent {\@listofsupportingpapersoutro}%
 }
 
 
