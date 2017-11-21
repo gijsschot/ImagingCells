@@ -15,14 +15,13 @@ $F(\vec{S})$ is independent from detector distance $d$, while a diffraction patt
 
 Using the scaling relation between $F(\vec{S})$ sampled at the Ewald sphere, and the measured diffraction pattern at the detector, we can derive that pixel $P$ on the detector corresponds to pixel $\vec{Q} = \frac{\vec{P}}{\lambda\,d}$ on the Ewald sphere. 
 
-Since $F(\vec{S})$ is measured at discrete locations, we have to use the discrete Fourier transform (DFT), and its inverse, to describe the relation between the measured diffraction pattern and the scattering potential. From now on we will use $F(\vec{Q})$ to describe $F(\vec{S})$ measured at discrete positions. The discrete Fourier transform and its inverse can be described respectively as: 
-\begin{align}
-F(\vec{Q}) =& \frac{1}{\sqrt{K L M}} \sum\limits{k=1}^{K} \sum\limits{l=1}^{L}\sum\limits{m=1}^{M} \rho(\vec{R_{k,l,m}}) e^{-2 \pi i \vec{Q}_{k,l,m}\cdot\vec{R}_{k,l,m}}\\
-\rho(\vec{R}) =& \frac{1}{\sqrt{K L M}} \sum\limits{k=1}^{K} \sum\limits{l=1}^{L}\sum\limits{m=1}^{M} F(\vec{Q}_{k,l,m}) e^{2 \pi i \vec{Q}_{k,l,m}\cdot\vec{R}_{k,l,m}}
-\end{align}
-where $K$,$L$ and $M$ are the number of 3D pixels (voxels) in each dimensions, and $\vec{R}$ is the discretized version of $\vec{r}$. 
+Since $F(\vec{S})$ is measured at discrete locations, we have to use the discrete Fourier transform (DFT), and its inverse, to describe the relation between the measured diffraction pattern and the scattering potential. From now on we will use $F(\vec{Q})$ to describe $F(\vec{S})$ measured at discrete positions. 
 
-The use of the DFT implies that the scattering potential is also discretized. The pixel size in real space (scattering potential space) $r$ is the inverse of the size of the detector in Fourier space ($l$). $l = n\,q$, where $n$ in the number of pixels on the detector. This makes $r = \frac{\lambda\,d}{n\,p}$., where $q$ is the size of a pixel on the Ewald sphere, $d$ the detector distance, and $p$ is the size of a detector pixel.
+The use of the DFT implies that the scattering potential is also discretized. The pixel size in real space (scattering potential space) $r$ is the inverse of the size of the detector in Fourier space ($D$). $D = n\,q$, where $n$ in the number of pixels on the detector, $q$ is the size of a pixel on the Ewald sphere. $q$ is the scaled version of a detectro pixel $q = \frac{p}{\lambda d}$. This makes $r$
+\begin{equation}
+r = \frac{\lambda\,d}{n\,p}
+\end{equation}
+Here $\lambda$ is the wavelength of the radiation, $d$ the detector distance, and $p$ is the size of a detector pixel.
 
 %In a measurement the energy of a EM wave appears quantized, which means that one will always measure an integer number of the basic quantum of radiation: photons. The energy of a photon is related to its wavelength. The quantisation the measured intensity also has as an effect on the statistics, as they ar
 

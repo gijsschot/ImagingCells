@@ -187,7 +187,7 @@ Equation \ref{eq:cont} can be rewritten as:
 F(\vec{S}) = \int \rho(\vec{r},\lambda) \exp^{-2\pi i \,\vec{S} \cdot \vec{r}}\,d\vec{r}
 \end{equation}
 
-This equation is very similar to a well known Fourier transformation $\mathcal{F}( G(\omega) )$ []. 
+This equation is very similar to a well known Fourier transformation $\mathcal{F}( g( t ) )$ []. 
 
 \begin{equation}
  G(\omega) = \int g(t) e^{-2 \pi i \omega\, t}\,dt
@@ -197,15 +197,11 @@ Equation \ref{eq:diff_equation} is very convenient as we now know that, in the f
 
 We can now also define the inverse relation of \ref{eq:diff_equation}:
 \begin{equation}
-\rho(\vec{r}) = \mathcal{F}^-1 ( F(\vec{S}) ) = \frac{1}{2\,\pi}\int F(S) \exp^{2\pi i \,\vec{S} \cdot \vec{r}}\,d\vec{S}
+\rho(\vec{r}) = \mathcal{F}^{-1} ( F(\vec{S}) ) = \frac{1}{2\,\pi}\int F(S) \exp^{2\pi i \,\vec{S} \cdot \vec{r}}\,d\vec{S}
 \end{equation}
 
 
 \section{the Ewald Sphere}
-
-The molecular transform $F(\vec{S})$ of a three-dimensional object is also three-dimensional. A diffraction pattern, however, is not. To understand this, we have to evaluate $\vec{S}$ more carefully. 
-
-In a diffraction experiment $\vec{S} = \vec{s}_{out} -\vec{s}_{in}$ (see equation \ref{eq:ScatteringVector},). $\vec{s}_{in}$ is constant, and is determined by the propagation direction of the incoming EM field. $\vec{s}_{out}$ has a fixed length ($1/\lambda$), and points in the direction of the scattered field ($\theta$). The scattering vector $\vec{S}$ is therefore limited to reside on the surface of a sphere of radius $1/\lambda$. This sphere is called the Ewald sphere [] (see Figure \ref{fig:EwaldSphere}). 
 
 \begin{figure}[h]
 	\centering 
@@ -214,50 +210,53 @@ In a diffraction experiment $\vec{S} = \vec{s}_{out} -\vec{s}_{in}$ (see equatio
 	\caption{A schematic of the Ewald sphere. The scattering vector $\vec{S}$ will always reside on the surface of a sphere of length $1/\lambda$, that intersects with the origin of the three-dimensional molecular transform of the object. $\vec{S} = \vec{s}_{in} - \vec{s}_{out}$. $\vec{s}_{in}$ is constant and is determined by the direction of the incoming radiation. $\vec{s}_{out}$ has a constant length, but varies in direction with scattering angle $\theta$. }
 \end{figure}
 
+The molecular transform $F(\vec{S})$ of a three-dimensional object is also three-dimensional. A diffraction pattern, however, is not. To understand this, we have to evaluate $\vec{S}$ more carefully. 
+
+In a diffraction experiment $\vec{S} = \vec{s}_{out} -\vec{s}_{in}$ (see equation \ref{eq:ScatteringVector},). $\vec{s}_{in}$ is constant, and is determined by the propagation direction of the incoming EM field. $\vec{s}_{out}$ has a fixed length ($1/\lambda$), and points in the direction of the scattered field ($\theta$). The scattering vector $\vec{S}$ is therefore limited to reside on the surface of a sphere of radius $1/\lambda$. This sphere is called the Ewald sphere [] (see Figure \ref{fig:EwaldSphere}). 
+
+
 The Ewald sphere intersects the $F(S)$ through its center $F(0)$. At small scattering angles the curved Ewald sphere can considered to be flat. This means that a diffraction pattern can be approximated as slice through the center of the molecular transform.  This relation will prove itself to be very useful.
 
 \section{Properties of the Fourier transform}
 There is a large mathematical field describing the properties of Fourier transformations. A few of these relations are very useful to this thesis.
+\begin{enumerate}
 
-\textbf{Linearity}\\
-	For any complex number $a$, if $h(t) = a f(t)$, then $H(\omega) = a \, G(\omega)$
+\item Linearity\\
+	For any complex number $a$, if $h(t) = a g(t)$, then $H(\omega) = a \, G(\omega)$
 
-\textbf{Scaling}\\
-	For any non-zero real number $a$, if $h(t) = f(a t)$, then $H(\omega) = \frac{1}{|a|} G\left(\frac{\omega}{a}\right)$
+\item Scaling\\
+	For any non-zero real number $a$, if $h(t) = g(a t)$, then $H(\omega) = \frac{1}{|a|} G\left(\frac{\omega}{a}\right)$
 
-\textbf{Translation}\\
-	For any real number $t_0$, if $h(t) = a f(t+\Delta t)$, then $H(\omega) = e^{-2\pi\,i\,\Delta t \omega} G(\omega)$. The factor $e^{2 \pi i \delta t \omega}$ is called a 'phase-ramp'.
+\item Translation\\
+	For any real number $t_0$, if $h(t) = a g(t+\Delta t)$, then $H(\omega) = e^{2\pi\,i\,\Delta t \omega} G(\omega)$. The factor $e^{2 \pi i \Delta t \omega}$ is called a 'phase-ramp'.
 
-\textbf{Convolution}\\
+\item Convolution\\
 The Convolution theorem states that a multiplication in Fourier space is a convolution in object space (real space) and vice versa.
 \begin{equation}
-f(x) * g(x) = \int f(\tau)g(x-\tau)\,d\tau = \mathcal{F}^{-1} {\mathcal{F}f(x)\times\mathcal{F}g(x)}
+f(t) * g(t) = \int f(\tau)g(t-\tau)\,d\tau = \mathcal{F}^{-1} \left( \mathcal{F}(f(t))\,\mathcal{F}(g(t))\right)
 \end{equation}
 
-Cross-correlation
-
-Autocorrelation
-
-\textbf{Projection Approximation}\\
-The projection slice theorem states that the Fourier transform of the projection of an three-dimensional function f(t) onto an two-dimensional plane is equal to an two-dimensional slice through the origin of the three-dimensional Fourier transform of the function f(t)
+\item {Projection Approximation}\\
+The projection slice theorem states that the Fourier transform of the projection of an three-dimensional function g(t) onto an two-dimensional plane is equal to an two-dimensional slice through the origin of the three-dimensional Fourier transform of the function g(t)
 which is parallel to the projection plane. At small scattering angles, a diffraction pattern is a slice through the center of the three-dimensional Fourier transform. In this case the results of equation can be interpreted as a projection of the scattering potential. 
 
-\textbf{Discrete Fourier Transform}
+\item {Discrete Fourier Transform}\\
 In practice we are dealing with a signals that are not continuous, but discrete. Most signal recording is done digitally, and to be able to do numerical computations on the signal, it has to be digitized as well. For discrete signal the discrete Fourier transform (DFT) and the inverse discrete Fourier transform (IDFT) can be used.
 
 \begin{equation}
-DFT( f( T_{k,l,m} ) ) = F( \Omega_{k,l,m} ) = \sum\limits{k=1}^{K} \sum\limits{l=1}^{L} \sum \limits{m=1}^{M} f( T_{k,l,m} ) e^{-2 \pi i \Omega_{k,l,m} \cdot T_{k,l,m}}
+DFT( g( T_{k,l,m} ) ) = G( \Omega_{k,l,m} ) = \sum_{k=1}^{K} \sum_{l=1}^{L} \sum_{m=1}^{M} g( T_{k,l,m} ) e^{-2 \pi i \Omega_{k,l,m} \cdot T_{k,l,m}}
 \end{equation}
 
 \begin{equation}
-IDFT( F( \Omega_{k,l,m} ) ) = f ( T_{i,j,k} ) = \frac{1}{{K L M}} \sum\limits{k=1}^{K} \sum\limits{l=1}^{L}\sum\limits{m=1}^{M} F( \Omega_{k,l,m} ) e^{2 \pi i \Omega_{k,l,m} \cdot T_{k,l,m} }
+IDFT( G( \Omega_{k,l,m} ) ) = g ( T_{i,j,k} ) = \frac{1}{{K L M}} \sum_{k=1}^{K} \sum_{l=1}^{L}\sum_{m=1}^{M} G( \Omega_{k,l,m} ) e^{2 \pi i \Omega_{k,l,m} \cdot T_{k,l,m} }
 \end{equation}
 
 where $K$,$L$ and $M$ are the number of 3D pixels (voxels) in each dimensions. $T_{k,l,m}$ and $\Omega_{k,l,m}$ are the discretized version of $t$ and $\omega$. 
 
+\end{enumerate}
 
 \section{Radiation Damage}
-The scattering power of an body is inversely proportional to the cube of the size of the object $o$. The smaller an object is, the less scattering occurs. To compensate for this loss in signal, the required dose for imaging increases. Practically this means that a dose in excess of 100 MGy is required to record an interpretable signal from a living cell. To put this in perspective, a dose of 2000 Gy is already enough to kill an organism that lives on earth. This means that the amount of energy deposited into the system through photoabsorption is not negligable. The main process of photoabsorption at soft-X-ray wavelengths is  photoionisation. Many process follow the ionization event, of which non-radiative Auger decay can lead to significant radiation damage throughout the material. The relation between the required dose of radiation versus the maximum tolerable dose of radiation posed a physical limit to the obtained resolution for imaging single biomolecules [Howell].
+The scattering power of an object is proportional to its volume, and thus varies with the 3rd power of its size. The smaller an object is, the less scattering occurs. To compensate for this loss in scattered signal, the required dose for imaging increases. Practically this means that a dose in excess of 100 MGy is required to record an interpretable signal from a living cell. To put this in perspective, a dose of 2000 Gy is already enough to kill an organism that lives on earth. This means that the amount of energy deposited into the system through photoabsorption is not negligible. The main process of photoabsorption at soft-X-ray wavelengths is  photoionisation. Many process follow the ionization event, of which non-radiative Auger decay can lead to significant radiation damage throughout the material. The relation between the required dose of radiation versus the maximum tolerable dose of radiation posed a physical limit to the obtained resolution for imaging single biomolecules [Howell].
 
 \section{Diffract-before-destroy}
 An elegant solution to the problem of radiation damage came from the realization that elastic scattering occurs on a  time scale shorter than the damage processes manifest themselves structurally. This principle is of diffract-before-destroy, suggested in 2000 by Neutze \textit{et al.} \cite{Neutze2000}, was experimentally demonstrated on a silicon-nitrate sample \cite{Chapman2009}. This experiment used the ultra short and extremely bright pulses from the first x-ray free-electron laser to outrun key damage processes \cite{Chapman2000}. Although the pulse literally obliterated the sample, enough structural information was captured to retrieve the original structure. A single XFEL pulse has a power densities of $10^{16} W/cm^2$, and can be between 1-100 fs long. This facilitates the imaging of single particles at room temperature.
