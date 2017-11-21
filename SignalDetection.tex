@@ -1,46 +1,40 @@
 \chapter{Data recording}
-After the interaction between light and our material we have to measure the scattered waves. Equation shows that the scattered wave is determined by the complex amplitude F(S). The real part of F(S) is called the amplitude, and the imaginary part of F(S) is called the phase ($\phi$). Currently there no device is capable of measuring the phase of x-rays directly, as it changes in the attosecond range. The former can be measured, but based on the low probability of interaction between light and matter, as well as the vacuum condition in which the detector is placed, this is not trivial. In the satellite mission XMM-Newton of the European space agency, two types of x-ray detectors were used: the CMOS and the pn-junction charge coupled device (pnCCD). The experiments described in this thesis used a modified version of the original pnCCD type detector. 
+As we have learned in chapter 2, a diffraction pattern is the Fourier transform of the scattering potential, sampled at the Ewald sphere ($F{\vec{S}}$). The scattering potential is determined by the structure of the object which is sampled. If a diffraction pattern measures the low scattering angles, the curved Ewald sphere might be approximated as being flat. This chapter will describe the essentials of the process of actually measuring the diffracted signal.
 
-\section{the pnCCD detector}\label{sec:pnccd}
-The exact working of a pnCCD detector requires an understanding
-of semiconductor physics, which goes outside of the scope of this
-thesis. A pnCCD consists of three layers of material. First a layer of ...
-protecting the other layers from the high vacuum. Secondly there is a layer
-of high-purity n-type silicon. In this layer the incoming x-ray
-photons are absorbed and
-electrons are released from the bulk material through the photoexcitation. A third layer consisting
-p-type silicon is placed behind the second layer. By applying a
-positive charge to the layers electrons move towareds the back of the
-detector where they are stored in potential wells. At the frame rate
-these wells are depleted, and the current is amplified and then measured. 
-   
-\section{Quantum Efficiency}
-An important parameter describing the pnCCD is the quantum
-efficiency (QE). This parameter describes the fraction of incident photons 
-converted to charge carriers. Often this is close to 100\% but for
-each material the QE varies as a function of wavelength. A high QE
-improve the signal to noise ratio, which becomes important in low the
-low signal areas of the detector.
-record the diffracted signal in that low scattering parts of the detector. High energy X-ray radiation
-(larger than 5keV) would require another type of detector than the pnCCD. 
+The value of $F{\vec{S}}$ is complex. The complex amplitude corresponds to the amplitude of the measured wave, and the complex argument corresponds to the phase shift of the wave.
+Currently no device exists capable of measuring the phase of x-rays directly, as it changes in the attosecond range. The amplitude of the EM wave can be determined through an intensity measurement. 
+
+\begin{equation}
+I(\vec{S}) = |F(\vec{S})|^2
+\end{equation}
+
+In the experiments described in this thesis we used a so-called pnCCD detector to determine the $I(\vec{S})$. A pnCCD is a 2D array of pixels of size $p$. Each pixel registers the intensity of the EM wave at that location by converting the energy present in the EM wave into an electrical current, using a physical process called the photo-electric effect (a type of photoabsorption). 
+
+$F(\vec{S})$ is independent from detector distance $d$, while a diffraction pattern is not. The relative scaling factor between the two is $\frac{1}{\lambda\,d}$. This means that the area covered by a pixel of size $p$ on the detector covers an area of size $q = \frac{p}{\lambda \, d}$ of the Ewald sphere (given the small angle approximation holds). 
+
+
+Using the scaling relation between $F(\vec{S})$ sampled at the Ewald sphere, and the measured diffraction pattern at the detector, we can derive that pixel $P$ on the detector corresponds to pixel $\vec{Q} = \frac{\vec{P}}{\lambda\,d}$ on the Ewald sphere. 
+
+Since $F(\vec{S})$ is measured at discrete locations, we have to use the discrete Fourier transform (DFT), and its inverse, to describe the relation between the measured diffraction pattern and the scattering potential. From now on we will use $F(\vec{Q})$ to describe $F(\vec{S})$ measured at discrete positions. The discrete Fourier transform and its inverse can be described respectively as: 
+\begin{align}
+F(\vec{Q}) =& \frac{1}{\sqrt{K L M}} \sum\limits{k=1}^{K} \sum\limits{l=1}^{L}\sum\limits{m=1}^{M} \rho(\vec{R_{k,l,m}}) e^{-2 \pi i \vec{Q}_{k,l,m}\cdot\vec{R}_{k,l,m}}\\
+\rho(\vec{R}) =& \frac{1}{\sqrt{K L M}} \sum\limits{k=1}^{K} \sum\limits{l=1}^{L}\sum\limits{m=1}^{M} F(\vec{Q}_{k,l,m}) e^{2 \pi i \vec{Q}_{k,l,m}\cdot\vec{R}_{k,l,m}}
+\end{align}
+where $K$,$L$ and $M$ are the number of 3D pixels (voxels) in each dimensions, and $\vec{R}$ is the discretized version of $\vec{r}$. 
+
+The use of the DFT implies that the scattering potential is also discretized. The pixel size in real space (scattering potential space) $r$ is the inverse of the size of the detector in Fourier space ($l$). $l = n\,q$, where $n$ in the number of pixels on the detector. This makes $r = \frac{\lambda\,d}{n\,p}$., where $q$ is the size of a pixel on the Ewald sphere, $d$ the detector distance, and $p$ is the size of a detector pixel.
+
+%In a measurement the energy of a EM wave appears quantized, which means that one will always measure an integer number of the basic quantum of radiation: photons. The energy of a photon is related to its wavelength. The quantisation the measured intensity also has as an effect on the statistics, as they ar
 
 \section{Missing Data}
-The geometry of the detectors used in the experiments decribed in this
-thesis consist of two moveable halves (38.4 mm by 76.8 mm), with a
-dead area of at least 0.8 mm in between both halves. In the center of
-detector a hole is created to let the high-intensity direct beam
-through (each detector halve misses a semicircle). In this
-area there is no intensity information present. 
+The geometry of the detectors used in the experiments described in this thesis consist of two moveable halves (38.4 mm by 76.8 mm), with a dead area of at least 0.8 mm in between both halves (see figure \ref{fig:experimental_geometry}). In the center of the
+detector a hole is created to let the high-intensity direct beam through (each detector halve misses a semicircle). For both the dead area, and the central hole no intensity information present. As a result the diffraction pattern is incomplete. 
+
+In some experiments two pairs of detectors are used, in which one pair located closer to the sample (see figure \ref{fig:experimental_geometry}). The back detector is closed, and the front detector is opened such that is does not shadow the back detector.
  
 \section{Saturation}
-Besides missing data due to the detector geometry, detector saturation
-might also lead to missing information. The potential wells described
-in \ref{sec:pnccd} can maximally hold a certain amount of charge. If
-more charge is present (many photons scatter in th, the excess charge overflows to neigboring
-wells, making it impossible to accurately use the original and the
-affected wells. If the amount of charge is very high, it might even
-damage the detector itself. If no bragg peaks are present on the
-detector, all saturation will occur in the center of the detector. 
+Besides missing data due to the detector geometry, detector saturation might also lead to missing information. Each pixel on the detector can maximally hold a certain amount of electrical charge. If more charge is present in the pixel, the excess charge will overflows to neighbouring pixels, making it impossible to accurately use the original and the
+affected pixels. If the amount of charge is very high, saturation might even damage the detector itself. Saturation usually occurs in the center of the detector, because these regions are typically the most intense regions of a diffraction pattern. 
 
 
 

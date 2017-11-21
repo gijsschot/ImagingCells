@@ -103,13 +103,13 @@ If more than one electron are present the scattered waves will interfere, simila
 
 \begin{figure}[h]
 \centering 
-\includegraphics[width=46mm]{Young_Diffraction2.png}
-\includegraphics[width=40mm]{blah.png}
+\includegraphics[width=120mm]{InterferenceTwoElectrons3.png}
+%\includegraphics[width=40mm]{blah.png}
 \label{fig:Interference}
-\caption{Illustration of scattering from two free-electrons A and B. a) graphic taken from Young, showing an interference pattern between two waves. b) mathematical description of the path length difference between two waves arriving at point $\vec{d}$. $\vec{s_{in}}$ and $\vec{s_{out}}$ are vectors of legnth $1/\lambda$, pointing in the direction of the incident wave and the out going wave respectively. $\vec{r}$ is a position vector describing the distance from of point A to point B. Note that in a) $x_0 = 0$.}
+\caption{Illustration of the scattering from two free-electrons. a) The two blue dots represent two independently scattering free-electrons. The rings represent the maxima of the two scattered waves. One can see the a light-dark band structure appear, characteristic of a interference pattern. b) mathematical description of the path length difference between two waves arriving at point $\vec{d}$. $\hat{s}_{in}$ and $\hat{s}_{out}$ are unit vector pointing in the direction of the incident wave and the out going wave respectively. $\vec{r}$ is a position vector describing the relative distance between the two electrons. }
 \end{figure}
 
-If the diffraction pattern is measured at point \(\vec{d}\), far away from the diffracting object itself, both scattered fields have approximately the same field strength since the distance from both electrons to the detector is about equal. In Figure \ref{fig:Interference} this means that  $|\vec{d}+x_1| \approx |\vec{d}|$, and that both lines are parallel. This approximation is called the far-field approximation. The Fresnel number (FN) is used to verify the validity of the far-field approximation.
+If the diffraction pattern is measured at point \(\vec{d}\), far away from the diffracting object itself, both scattered fields have approximately the same field strength since the distance from both electrons to the detector is about equal. In Figure \ref{fig:Interference} this means that  $|\vec{d}+x_1| \approx |\vec{d}|$, and that both $\hat{s}_out$ are parallel. This approximation is called the far-field approximation. The Fresnel number (FN) is used to verify the validity of the far-field approximation.
 \begin{equation} 
 FN = \frac{o^2}{d\lambda}
 \end{equation}
@@ -124,14 +124,14 @@ E(\vec{d}) = E_s(\vec{d})+E_s(\vec{d}) e^{\frac{2 \pi\,i\,\Delta x}{\lambda}}
 \end{equation}
 $\Delta x$ is the optical path difference between the two scattered waves due to the relative difference in position. $\Delta x$ can be determined by summing $x_0$ which is the path difference of the incoming radiation and $x_1$ which is the path difference of the outgoing radiation. Both $x_0$ and $x_1$ can be described using the difference vector $\vec{r}$: 
 \begin{equation}
-\Delta x = x_0 - x_1 =\vec{s_{out}} \cdot \vec{r}-\vec{ s_{in}}\cdot \vec{r} = (\vec{s_{out}} -\vec{s_{in}} ) \cdot \vec{r} 
+\Delta x = x_0 - x_1 =\hat{s}_{out} \cdot \vec{r}-\hat{ s}_{in}\cdot \vec{r} = (\hat{s}_{out} -\hat{s}_{in} ) \cdot \vec{r} 
 \end{equation}
 
 By defining the scattering vector $\vec{S}$
 \begin{equation}\label{eq:ScatteringVector}
-\vec{S} = \vec{s_{out}}-\vec{s_{in}}
+\vec{S} = \frac{\hat{s}_{out}}{\lambda} - \frac{\hat{s}_{out}}{\lambda}\\ = \vec{s_{out}}-\vec{s_{in}}
 \end{equation}
-the diffraction pattern of two electrons will be :
+the diffraction pattern of two electrons van be written as:
 \begin{equation}
 E(\vec{d}) = E_s(\vec{d}) + E_s(\vec{d}) e^{2\,\pi\,  i\,\vec{S}\cdot\vec{r}}
 \end{equation}
@@ -147,28 +147,28 @@ E(\vec{d}) = E_s(\vec{d}) \sum_{n} e^{2\,\pi\,  i\,\vec{S}\cdot\vec{r_n}}
 \end{equation}
 where n identifies the individual electrons.
 
-In biological particles the incoming EM radiation is scattered by electrons that are part of atoms, instead of being scattered by free electrons. As we will see, this has a major effect on the scattering process. The scattering potential $\rho(\vec{r},\lambda)$ describes the scattering from a single atom in comparison to the scattering by a free electron.
+In biological particles the incoming EM radiation is scattered by electrons that are part of atoms, instead of being scattered by free electrons. As we will see, this has a major effect on the scattering process. The scattering potential $\rho(\vec{r},\lambda)$ describes the scattering from a single atom in comparison to the scattering by a free electron. At X-ray wavelengths $\rho(\vec{r},\lambda)$ can be approximated by:
 
 \begin{equation}
-\rho(\vec{r},\lambda) = \frac{r_e N \lambda^2}{4 \pi} (f_1(\lambda)+i f_2(\lambda))^2 - r_e N (f_i(\lambda)+i f_2(\lambda) ) 
+\rho(\lambda.\vec{r}) = -r_e (f_1 + i\,f_2)
 \end{equation}
-Here, $r_e$ is the classical electron radius, $N$ are the number of electrons in an atom, and $f = f_1+ i f_2$ is the atom specific scattering factor. The imaginary part of $f$, $f_2$, is derived from the atomic photoabsorption cross section and is a measure of absorption [booklet]. $f_2$ becomes very relevant close to an absorption edge of the material. The real part of the scattering factor, $f_1$, describes the scattering power of an atom. It is related to the imaginary part by the Kramers-Kronig dispersion relation [Kramers]. At high photon energies $f_1$ approaches the atomic number of atom.  
+Here, $r_e$ is the classical electron radius. $f_2$ is derived from the atomic photoabsorption cross section and is a measure of absorption [booklet]. $f_2$ becomes very relevant close to an absorption edge of the material. $f_1$ describes the scattering power of an atom. It is related to the imaginary part by the Kramers-Kronig dispersion relation [Kramers]. At high photon energies $f_1$ approaches the atomic number of an atom.  
 
-For most elements, the exact value of $f_1$ and $f_2$ have been determined experimentally for a wide range of photon-energies \cite{Henke1990}. Figure \ref{fig:waterwindow} presents the scattering factors of two elements: carbon and oxygen. The gray energy range from 282-533 eV (4.40 nm - 2.33 nm) is called the water window. In this region, and especially towards the end, oxygen atoms (thus water) are scattering significantly less than carbon atoms (i.e. organic biomolecules). The water window therefore a good candidate for imaging cells, as the contrast between two of their main constituents, water and biomolecules, is enhanced.
+For most elements, the exact value of $f_1$ and $f_2$ have been determined experimentally for a wide range of photon-energies \cite{Henke1990}. Figure \ref{fig:waterwindow} presents the scattering factors of two elements: carbon and oxygen. The energy range from 282-533 eV (4.40 nm - 2.33 nm) is called the water window. In this region, and especially towards the higher energies, oxygen atoms and thus water, are scattering significantly less than the carbon atoms that  make up organic biomolecules. The water window is therefore a good candidate for imaging cells, as the contrast between two of their main constituents, water and biomolecules, is enhanced.
 
 \begin{figure}[h]
 \centering 
 \includegraphics[width=80mm]{waterwindow.png}
 \label{fig:waterwindow}
-\caption{Atomic scattering factors $f_1$ and $f_2$ of carbon and oxygen, as a function of photon-energy of the X-ray radiation. The region between the absorption K-edge of carbon (282 eV, 4.40 nm) and the K-edge of oxygen (533 eV, 2.33 nm) is called the water window.  The contrast between biomolecules and water is enhanced in this region, especially towards the high end of it. These wavelengths could be used for imaging living biological particles such as cells or organelles.}
+\caption{Atomic scattering factors $f_1$ and $f_2$ of carbon and oxygen, as a function of photon-energy of the X-ray radiation. The region between the absorption K-edge of carbon (282 eV, 4.40 nm) and the K-edge of oxygen (533 eV, 2.33 nm) is called the water window.  The contrast between biomolecules and water is enhanced in this region, especially towards higher photon energies. These wavelengths could be used for imaging living biological particles such as cells or organelles.}
 \end{figure}
 
 The scattered field can now be described as follows:
 
-\begin{equation}\label{eq:boehoe}
+\begin{equation}\label{eq:boehoe2}
 E(\vec{d}) = E_s(\vec{d}) \sum_{m} \rho(\lambda,\vec{r}) e^{2\,\pi\,  i\,\vec{S}\cdot\vec{r_m}}
 \end{equation}
-where m denoted the different atoms.
+where $m$ denotes the different atoms.
 
 If all electrons together are assumed to form a continuous electric charge density around the many nuclei that constitute the biological particle, equation \ref{eq:boehoe}  can be written as a continuous function. 
 
@@ -187,12 +187,19 @@ Equation \ref{eq:cont} can be rewritten as:
 F(\vec{S}) = \int \rho(\vec{r},\lambda) \exp^{-2\pi i \,\vec{S} \cdot \vec{r}}\,d\vec{r}
 \end{equation}
 
-This equation is very similar to a well known Fourier transformation []. We can now also define the inverse relation of \ref{eq:diff_equation}:
+This equation is very similar to a well known Fourier transformation $\mathcal{F}( G(\omega) )$ []. 
+
 \begin{equation}
-\rho(\vec{r}) = \int F(S) \exp^{2\pi i \,\vec{S} \cdot \vec{r}}\,d\vec{S}
+ G(\omega) = \int g(t) e^{-2 \pi i \omega\, t}\,dt
 \end{equation}
 
 Equation \ref{eq:diff_equation} is very convenient as we now know that, in the far-field, the scattering of a plane wave is proportional to the Fourier transform of the scattering potential evaluated at $\vec{S}$.
+
+We can now also define the inverse relation of \ref{eq:diff_equation}:
+\begin{equation}
+\rho(\vec{r}) = \mathcal{F}^-1 ( F(\vec{S}) ) = \frac{1}{2\,\pi}\int F(S) \exp^{2\pi i \,\vec{S} \cdot \vec{r}}\,d\vec{S}
+\end{equation}
+
 
 \section{the Ewald Sphere}
 
@@ -207,35 +214,55 @@ In a diffraction experiment $\vec{S} = \vec{s}_{out} -\vec{s}_{in}$ (see equatio
 	\caption{A schematic of the Ewald sphere. The scattering vector $\vec{S}$ will always reside on the surface of a sphere of length $1/\lambda$, that intersects with the origin of the three-dimensional molecular transform of the object. $\vec{S} = \vec{s}_{in} - \vec{s}_{out}$. $\vec{s}_{in}$ is constant and is determined by the direction of the incoming radiation. $\vec{s}_{out}$ has a constant length, but varies in direction with scattering angle $\theta$. }
 \end{figure}
 
-The Ewald sphere intersects the $F(S)$ through its center $F(0)$. At small scattering angles this means that the curved diffraction pattern can be approximated as a Euclidean slice through the center of the molecular transform.  This relation will prove itself to be very useful.
+The Ewald sphere intersects the $F(S)$ through its center $F(0)$. At small scattering angles the curved Ewald sphere can considered to be flat. This means that a diffraction pattern can be approximated as slice through the center of the molecular transform.  This relation will prove itself to be very useful.
 
-$F(\vec{S})$ is independent from detector distance $d$, while a diffraction pattern is not. The relative scaling factor between the two is $\frac{1}{\lambda\,d}$. This means that the area covered by a pixel of size $p$ on the detector covers an area of size $q = \frac{p}{\lambda \, d}$ of the Ewald sphere (given the small angle approximation holds). 
+\section{Properties of the Fourier transform}
+There is a large mathematical field describing the properties of Fourier transformations. A few of these relations are very useful to this thesis.
 
+\textbf{Linearity}\\
+	For any complex number $a$, if $h(t) = a f(t)$, then $H(\omega) = a \, G(\omega)$
 
-\section{Useful Fourier relations}
-There is a large mathematical field describing the relation of Fourier transformations. A few of these relations are very useful to this thesis.
+\textbf{Scaling}\\
+	For any non-zero real number $a$, if $h(t) = f(a t)$, then $H(\omega) = \frac{1}{|a|} G\left(\frac{\omega}{a}\right)$
 
-The Fourier shift theorem describes the change in the diffraction pattern upon object translation (i.e. shift).
-\begin{equation}
-\mathcal{F}(f(x+\delta x))=e^{2\pi i \delta x q} \mathcal{F}(f)
-\end{equation}
-The factor $e^{2 \pi i \delta x q}$ is called a 'phase-ramp'.
+\textbf{Translation}\\
+	For any real number $t_0$, if $h(t) = a f(t+\Delta t)$, then $H(\omega) = e^{-2\pi\,i\,\Delta t \omega} G(\omega)$. The factor $e^{2 \pi i \delta t \omega}$ is called a 'phase-ramp'.
 
+\textbf{Convolution}\\
 The Convolution theorem states that a multiplication in Fourier space is a convolution in object space (real space) and vice versa.
 \begin{equation}
 f(x) * g(x) = \int f(\tau)g(x-\tau)\,d\tau = \mathcal{F}^{-1} {\mathcal{F}f(x)\times\mathcal{F}g(x)}
 \end{equation}
 
-The projection slice theorem states that the Fourier transform of the projection of an three-dimensional function f(r) onto an two-dimensional plane is equal to an two-dimensional slice through the origin of the three-dimensional Fourier transform of the function f(r)
+Cross-correlation
+
+Autocorrelation
+
+\textbf{Projection Approximation}\\
+The projection slice theorem states that the Fourier transform of the projection of an three-dimensional function f(t) onto an two-dimensional plane is equal to an two-dimensional slice through the origin of the three-dimensional Fourier transform of the function f(t)
 which is parallel to the projection plane. At small scattering angles, a diffraction pattern is a slice through the center of the three-dimensional Fourier transform. In this case the results of equation can be interpreted as a projection of the scattering potential. 
 
+\textbf{Discrete Fourier Transform}
+In practice we are dealing with a signals that are not continuous, but discrete. Most signal recording is done digitally, and to be able to do numerical computations on the signal, it has to be digitized as well. For discrete signal the discrete Fourier transform (DFT) and the inverse discrete Fourier transform (IDFT) can be used.
+
+\begin{equation}
+DFT( f( T_{k,l,m} ) ) = F( \Omega_{k,l,m} ) = \sum\limits{k=1}^{K} \sum\limits{l=1}^{L} \sum \limits{m=1}^{M} f( T_{k,l,m} ) e^{-2 \pi i \Omega_{k,l,m} \cdot T_{k,l,m}}
+\end{equation}
+
+\begin{equation}
+IDFT( F( \Omega_{k,l,m} ) ) = f ( T_{i,j,k} ) = \frac{1}{{K L M}} \sum\limits{k=1}^{K} \sum\limits{l=1}^{L}\sum\limits{m=1}^{M} F( \Omega_{k,l,m} ) e^{2 \pi i \Omega_{k,l,m} \cdot T_{k,l,m} }
+\end{equation}
+
+where $K$,$L$ and $M$ are the number of 3D pixels (voxels) in each dimensions. $T_{k,l,m}$ and $\Omega_{k,l,m}$ are the discretized version of $t$ and $\omega$. 
+
+
 \section{Radiation Damage}
-The scattering power of an body is related to the wavelength of the radiation. The shorter the wavelength the less scattering occurs. To compensate for this loss in signal, the required dose for imaging increases. Practically this means that a dose in excess of 100 MGy is required to record an interpretable signal from a living cell (a dose of 2000 Gy is already enough to kill everything that lives on earth). Unfortunately other processes of matter-radiation interaction become more abundant as well. At soft X-ray wavelengths the predominant damage process is photoionisation. Many process follow the ionization, of which non-radiative Auger decay will lead to significant radiation damage. The relation between the required dose of radiation versus the maximum tolerable dose of radiation posed a physical limit to the obtained resolution for imaging single biomolecules [Howell].
+The scattering power of an body is inversely proportional to the cube of the size of the object $o$. The smaller an object is, the less scattering occurs. To compensate for this loss in signal, the required dose for imaging increases. Practically this means that a dose in excess of 100 MGy is required to record an interpretable signal from a living cell. To put this in perspective, a dose of 2000 Gy is already enough to kill an organism that lives on earth. This means that the amount of energy deposited into the system through photoabsorption is not negligable. The main process of photoabsorption at soft-X-ray wavelengths is  photoionisation. Many process follow the ionization event, of which non-radiative Auger decay can lead to significant radiation damage throughout the material. The relation between the required dose of radiation versus the maximum tolerable dose of radiation posed a physical limit to the obtained resolution for imaging single biomolecules [Howell].
 
 \section{Diffract-before-destroy}
-An elegant solution to the problem of radiation damage came from the realization that elastic scattering occurs on a  time scale shorter than the damage processes manifest themselves structurally. This principle is of diffract-before-destroy, suggested in 2000 by Neutze et al [], was experimentally demonstrated on a silicon-nitrate sample [Chapman]. This experiment used the ultra short and extremely bright pulses from the first x-ray free-electron laser to outrun key damage processes. Although the pulse literally obliterated the sample, enough structural information was captured to retrieve the original structure. A single XFEL pulse has a power densities of $10^16 W/cm^2$, and can be between 1-100 fs long. This facilitates the imaging of single particles at room temperature.
+An elegant solution to the problem of radiation damage came from the realization that elastic scattering occurs on a  time scale shorter than the damage processes manifest themselves structurally. This principle is of diffract-before-destroy, suggested in 2000 by Neutze \textit{et al.} \cite{Neutze2000}, was experimentally demonstrated on a silicon-nitrate sample \cite{Chapman2009}. This experiment used the ultra short and extremely bright pulses from the first x-ray free-electron laser to outrun key damage processes \cite{Chapman2000}. Although the pulse literally obliterated the sample, enough structural information was captured to retrieve the original structure. A single XFEL pulse has a power densities of $10^{16} W/cm^2$, and can be between 1-100 fs long. This facilitates the imaging of single particles at room temperature.
 
-Diffract-before-destroy has been further validated by a wide variety of experiments. Serial femtosecond crystallography (SFX) showed that with this principle at least three orders of magnitude higher radiation doses are tolerated compared to regular crystallography, enabling the imaging of much smaller crystals []. The imaging of single particle has been shown feasible in 2D for a wide variety of biological particles, ranging from \textit{living} cells (Paper I) to cell organelles (Paper 7) to  40 nm viruses (Paper 8). Paper VI shows the experimental feasibility of using many 2D images to construct a 3D model of a giant virus.
+Diffract-before-destroy has been further validated by a wide variety of experiments \cite{Seibert2009,Seibert2010}. Serial femtosecond crystallography (SFX) showed that with this principle at least three orders of magnitude higher radiation doses are tolerated compared to regular crystallography, enabling the imaging of much smaller crystals []. The imaging of single particle has been shown feasible in 2D for a wide variety of biological particles, ranging from \textit{living} cells (\textbf{Paper I}) to cell organelles (\textbf{Paper VXIII}) to  40 nm viruses (\textbf{Paper XIV}). \textbf{Paper XVII} shows the experimental feasibility of using many 2D images to construct a 3D model of a giant virus.
 
 The field is very close to measuring the first 2D diffraction patterns of single proteins. For simulated data it has been shown that such patterns can be used to recover the 3D shape of proteins, even though the number of scattered photons might be as low a 1000 photons per frame. The ultra short pulses also allow for the studying of the dynamics of such systems, either by separating the images from different naturally occurring conformational states, or by identifying structural changes subsequent to an external trigger []. In the more distant future these structural changes might be tracked inside living cells. 
  
