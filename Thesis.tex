@@ -59,10 +59,10 @@
 \usepackage{hyperref} 
 
 % Numbering of headings down to the subsection level
-\numberingdepth{subsection}
+\numberingdepth{section}
 
 % Including headings down to the subsection level in contents
-\contentsdepth{subsection}
+\contentsdepth{section}
 
 
 % Uncomment to use a custom abstract dummy text
@@ -94,7 +94,23 @@
         \item Open dataset of RDV particles. %\label{DataRDV}
     \end{listofpapers}
     
-    
+    \begin{listofsupportingpapers}
+	\item G. van der Schot and A.M.J.J. Bonvin. Performance of the WeNMR CS-Rosetta3 web server in CASD-NMR. Journal of Biomolecular NMR, 62(4),497-502, 2015.	
+	\item G. van der Schot \textit{et al.} Improving 3D structure prediction from chemical shift data. Journal of biomolecular NMR, 57(1):27-35,2013.
+	\item T.A. Wassenaar \textit{et al.} WeNMR: Structural Biology on the Grid. Journal of Grid Computing, 10(4):747-767, 2012.
+	\item A. Rosato    \textit{et al.} Blind testing of routine, fully automated determination of protein structures from NMR data. Structure, 20(2):227-236, 2012.
+	\item M. Vendruscolo \textit{et al.} Protein structure
+determination using chemical shifts, NMR in Mechanistic Systems Biology, Chapter 10, 107-110, 2009.
+ 	\item A. Rosato    \textit{et al.} CASD-NMR: critical assessment of automated structure determination by NMR. Nature Methods, 6(9):625-626, 2009.
+ 	\item R.P. Kurta   \textit{et al.} Phys. Rev. Lett. 119, 158102, 2017.
+	\item H.K.N. Reddy \textit{et al.} Coherent soft X$-$ray diffraction imaging of coliphage PR772 at the Linac coherent light source. Scientific Data, 4:170079, 2017.
+	\item  B.J. Daurer \textit{et al.} Experimental strategies for imaging bioparticles with femtosecond hard X-ray pulses. IUCrJ, 4(3):252-262, 2017.
+	\item M.F. Hantke  \textit{et al.} A data set from flash X-ray imaging of carboxysomes. Scientific data, 3:160061, aug 2016.
+	\item A. Munke     \textit{et al.} Coherent diffraction of single Rice Dwarf virus particles using hard X-rays at the Linac Coherent Light Source. Scientific data, 3:160064, 2016.
+	\item T. Ekeberg   \textit{et al.} Three-Dimensional Reconstruction of the Giant Mimivirus Particle with an X-Ray Free-Electron Laser. Physical Review Letters, 114(9):098102, 2015.
+	\item M.F. Hantke  \textit{et al.} High-throughput imaging of heterogeneous cell organelles with an X-ray laser. Nature Photonics, 8(12):943-949, 2014.
+	\item A.V. Martin  \textit{et al.} Noise-robust coherent diffractive imaging with a single diffraction pattern. Optics Express, 20(15):16650, 2012.	
+    \end{listofsupportingpapers}
     \begingroup
         % To adjust the indentation in your table of contents, uncomment and enter the widest numbers for each level
         %  E.g.  \settocnumwidth{widest chapter number}{widest section number}{widest subsection number}...{...}
@@ -110,14 +126,17 @@
     
     % Include your chapters here.
     %\input{Introduction.tex}
-    \input{Motivation.tex}
-    \input{InteractionLightAndMatter.tex}
-    \input{GenerationXrayXFEL.tex}
-    \input{SampleInjection.tex}
-    \input{SignalDetection.tex}
-    \input{DataAnalysis.tex}
-    \input{Results.tex}
-
+    \input{Chapter_01_Motivation.tex}
+    \input{Chapter_02_InteractionLightAndMatter.tex}
+    \input{Chapter_03_GenerationXrayXFEL.tex}
+    \input{Chapter_04_SampleInjection.tex}
+    \input{Chapter_05_SignalDetection.tex}
+    \input{Chapter_06_DataAnalysis.tex}
+    \input{Chapter_07_Reconstruction3DObject.tex}
+    \input{Chapter_08_ImageClassification.tex}
+    \input{Chapter_09_Results.tex}
+    %\input{Chapter_10_Outlook.tex}
+	\input{Chapter_11_SammanfattningPaSvenska.tex}
 
 \backmatter
     % References
