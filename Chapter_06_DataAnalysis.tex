@@ -6,8 +6,8 @@ In 1952 Sayre noticed that the Bragg peaks sample the molecular transform $\math
 
 \begin{figure}[h]
 	\centering 
-		\includegraphics[width=120mm]{sampling.png}
-	\caption{Illustration of critical sampling versus 		oversampling.}
+		\includegraphics[width=120mm]{Chapter_06_Sampling.png}
+	\caption{Illustration of critical sampling (top row) versus oversampling (bottom row).}
 	\label{fig:sampling}
 \end{figure}
 
@@ -129,35 +129,34 @@ In \textbf{Paper I} we used the  UPGMA (Unweighted Pair Group Method with Arithm
 
 \begin{figure}[h]
 	\centering 
-		\includegraphics[width=100mm]{UPGMA_Clustering.jpg}
-	\caption{UPGMA Clustering.}
+		\includegraphics[width=100mm]{Chapter_06_UPGMAClustering.jpg}
+	\caption{Flow chart of the UPGMA Clustering algorithm. In the first step of the algorithm, n independent reconstructions (400 in this example) are compared pairwise, pixel-to-pixel to check similarity. Each comparison results in a so called comparison score. The second step is the actual clustering step in which the number of different clusters present in the set of reconstruction is determined. Initially each reconstruction belongs to its own cluster. In each consecutive merging step the two most similar clusters are merged into one cluster. This repeats itself until one cluster remains. Each merge can be given a similarity score using the comparison	scores from step 1. By plotting the similarity scores against the number of clusters, the number of clusters can be determined. We choose the number of cluster by cheking where this plot makes a kink. This is indicated by the green line in the top graph on the right. The bottom plot shows the Fourier-error and the Real-space error associated to each reconstruction, color-coded on the basis of which cluster they belong to. Here we note that there are four outliers and one main cluster. The outliers are clearly failed reconstructions.}
 	\label{fig:UPGMA}
 \end{figure}
 
-In the first step of this method each reconstruction is compared pairwise to every other reconstruction, pixel-to-pixel. The similarity score associated with each comparison is the normalized scalar product between the pair of reconstructions, after translating them to their optimal fit. 
+In the first step of this method each reconstruction is compared pairwise to every other reconstruction, pixel-to-pixel. The comparison score associated with each comparison is the normalized scalar product between the pair of reconstructions, after translating them to their optimal fit. 
 
-In the second step of the method similar reconstructions are grouped in clusters. Initially each reconstruction belongs to its own cluster. In every consecutive step the two most similar clusters are merged into one cluster, until in the end only one big cluster remains. For each merge we calculate the average similarity score over all reconstruction in the merged cluster. We plot the average similarity score of each cluster merge as a function of the number of clusters. The agglomeration step where the plot makes a "kink" is chosen as the number of different clusters that are present in the set of reconstructions. This is a standard way to estimate the number of clusters present in the set of reconstructions. This capability is an advantage of the  clustering algorithm. 
+In the second step of the method similar reconstructions are grouped in clusters. Initially each reconstruction belongs to its own cluster. In every consecutive step the two most similar clusters are merged into one cluster, until in the end only one big cluster remains. For each merge we calculate a similarity score, which is the average comparison score for all reconstruction in the merged cluster. We plot the similarity score of each cluster merge as a function of the number of clusters. The agglomeration step where the plot makes a "kink" is chosen as the number of different clusters that are present in the set of reconstructions. This is a standard way to estimate the number of clusters present in the set of reconstructions. This capability is an advantage of the  clustering algorithm. 
 
 In a 2D plot of $E_f$ vs. $E_r$, color-coded by cluster, it is possible to see whether or not there is a correlation of reconstruction similarity and error score.  In the case that several large clusters remaining after applying a real-space error and Fourier-error threshold the clusters have to be examined carefully. If the remaining clusters correlate with the errors we suggest to keep only the cluster with the lowest error. If no correlation is present between score and cluster it is advised to keep all clusters for further evaluation. Otherwise there is a possibility of selecting on similarity, which would negate the validation power of the PRTF.
 
  
 \section{Simulated Phase Contrast Methods}
-Once one has retrieved the phase of the diffraction pattern, one has complete knowledge of the information encoded in the said wave-field. This total knowledge is powerful, because it allows the emulation of the action of any imaging system for which an associated mathematical transform can be written, regardless of whether that system is experimentally realizable in hardware.
+Once one has retrieved the phase of the diffraction pattern, one has complete knowledge of the information encoded in the  wave-field. This total knowledge is powerful, because it allows the emulation of the action of any imaging system for which an associated mathematical transform can be written, regardless of its experimentally feasibility.
+For example, differential interference contrast imaging, otherwise known as Nomarski imaging, is experimentally a well established technique to visualize the changes in phase. This change can have biological meaning, as for example the density inside certain organelles can be higher than the average density in cells. Normarski imaging will give a more pronounced image of the borders of the organelle. For an example see ref [mitochondrium). 
 
-For example, differential interference contrast imaging or Nomarski imaging is experimentally a well established technique to visualize the changes in phase. This change can have biological meaning, as for example the density inside certain organelles can be higher than the average density in cells. Normarski imaging will give a more pronounced image of the borders of the organelle. For an example see ref [mitochondrium). 
-
-Nomarkski imaging in its simplest form takes a coherent wave-field of interest, say $\psi(x,y,z = 0)$, and then interferes this wave-field with a copy of itself that has been given both a slight transverse displacement ($\Delta x$, $\Delta y$) and a phase shift $\phi_0$ (Nomarski and Weill,1955). Thus the intensity of the resulting wave-field is [Paganin]:
+Nomarkski imaging in its simplest form takes a scattered wave-field, say $\psi(x,y,z = 0)$, and then interferes this wave-field with a copy of itself that has been given both a slight transverse displacement ($\Delta x$, $\Delta y$) and a phase shift $\phi_0$ (Nomarski and Weill,1955). Thus the intensity of the resulting wave-field $F_N$ is [Paganin]:
 $|\psi(x,y,z=0)+ e^{(i\phi_0)} \psi(x - \Delta x,y - \Delta y,z=0) |^2$, from which one can show (using the Fourier shift theorem) that the transfer function becomes:
 \begin{equation}
 \begin{aligned}
 \begin{split}
-T_{DIC}(k_x, k_y, \tau) = 1 + e^{(i(\phi_0 - k_x \Delta x - k_y \Delta y))},\\
+T_{DIC}(q_x, q_y, \tau) = 1 + e^{(i(\phi_0 - q_x \Delta x - q_y \Delta y))},\\
 \tau = (\phi_0, \Delta x, \Delta y)
 \end{split}
 \end{aligned}
 \end{equation}
 
-In the case of a reconstructed image $\rho(\vec{r})$, the Normarski variant will look like:
+In the case of a reconstructed image $\rho(\vec{r})$, the Normarski variant $N$ will look like:
 \begin{equation}
 N = \mathcal{F}^{-1} T_{DIC} \mathcal{F}(\rho(\vec{r}))
 \end{equation}
