@@ -1,9 +1,9 @@
 \chapter{Three dimensional Reconstructions}
-So far we have dealt with two-dimensional diffraction patterns. Although much can be learned (and has been learned) from two-dimensional images, having a three-dimensional model is essential to understand the functioning of biomolecules. From chapter 2 we know that a diffraction pattern samples a curved slice through the center of the molecular transform of the object. If the same object would be illuminated from different angles, the resulting diffraction patterns together could together sample the complete three-dimensional molecular transform. The approach in which multiple two-dimensional images from different angles of illumination are combined into one three-dimensional image is called tomography.%This chapter will describe what possibilities there exist to recover the three-dimensional structure of bioparticles using single particle FXI. It will start by describing several methods that use o recover structure of particles that are reproducible in shape such as many viruses and rigid proteins, and after that discusses the poss
+So far we have dealt with two-dimensional diffraction patterns. Although much can be learned (and has been learned) from two-dimensional images, having a three-dimensional model is essential to understand the functioning of biomolecules. From chapter 2 we know that a diffraction pattern samples a curved slice through the center of the molecular transform of the object. If the same object would be illuminated from different angles, the resulting diffraction patterns together could sample the complete three-dimensional molecular transform. The approach in which multiple two-dimensional images from different angles of illumination are combined into one three-dimensional image is called tomography.%This chapter will describe what possibilities there exist to recover the three-dimensional structure of bioparticles using single particle FXI. It will start by describing several methods that use o recover structure of particles that are reproducible in shape such as many viruses and rigid proteins, and after that discusses the poss
 
 \section{Reproducible Particles}
 
-In single particle FXI the illuminated particle is completely destroyed by the pulse. Up to date, it has therefore not been possible to image one particle multiple times. Some bioparticles however, are structurally reproducible. This means that diffraction patterns originating from different copies sample the same molecular transform, and thus can be combined to assemble the 3D fourier transform of the object.\footnote{Shouldn't we call the field of 3D structure determination serial femtosecond x-ray tomography}. Figure \ref{fig:two_slice_tomography} shows two aligned diffraction patterns. 
+In single particle FXI the illuminated particle is completely destroyed by the pulse. Up to date, it has therefore not been possible to image one particle multiple times. Some bioparticles however, are structurally reproducible. This means that diffraction patterns originating from different copies sample the same molecular transform, and thus can be combined to assemble the 3D fourier transform of the object. 
 
 In order to successfully assemble the 3D molecular transform from multiple diffraction patterns, their relative orientations need to be known. Most of the time this information is unavailable as the sample delivery methods do not allow for orientation selection. A variety of reconstruction algorithms have been proposed for recovering the relative orientation of diffraction data, including the EMC algorithm [Loh], the manifold embedding (ME) algorithm [Giannakis], common line algorithm [Tegze], and multi-particle cross-correlation analysis [Kam, Saldin, Kirian, Paper IV]. Theoretical studies suggest that the determination of diffraction pattern orientation should be possible even with photon counts of as little as 1000 scattered photons per image [Loh].
 
@@ -12,7 +12,7 @@ Common Lines
 As the example in figure 2 illustrates, two planes that intersect a common origin will always have at least a line in common. The common line algorithm[], uses this knowledge as a basis. In short this algorithm can be described as follows. For each pair of patterns all possible arcs between the two pattern are compared and the best match is chosen as the true one. Based on the retrieved relative orientations a full 3D model can be assembled. This works, as long as the diffraction patterns are not very noisy, as noise will make the comparison unreliable.
 
 \section{the expansion maximization compression (EMC) algorithm}
-The expansion maximization compression (EMC) algorithm is an iterative program. On the one side there are the 2D measured diffraction patterns ($K_j$), where $j$ is the index of each pattern. On the other side a there is a 3D model of the molecular transform of the object ($M^{MT}$). Note that model and the true molecular transform do not have to be the same, especially in the initial iterations. The starting model can be chosen to be random, or if more is known about the model, this information could be incorporated. As the latter might lead to model bias, it is not bad to start with a random model.
+The expansion maximization compression (EMC) algorithm is an iterative program. On the one side there are the 2D measured diffraction patterns ($K_j$), where $j$ is the index of each pattern. On the other side a there is a 3D model of the molecular transform of the object ($M^{MT}$). Note that model and the true molecular transform do not have to be the same, especially in the initial iterations. The starting model can be chosen to be random, or if more is known about the model, this information could be incorporated. As the latter might lead to model bias, thus it might even be a strength to start with a random model.
 
 Expand 
 
@@ -30,7 +30,7 @@ If you know your measurement is affected by a source that follows a Gaussian dis
 \begin{equation}
 d_{Gaussian}(W,K) = e^{\frac{(W_i-K_i)^2}{2\sigma^2}}
 \end{equation}
-Here $\sigma$ is the width of the noise distribution. What is most surprising with the EMC algorithm is that
+Here $\sigma$ is the width of the noise distribution. 
 
 Compression
 
@@ -52,8 +52,8 @@ This so-called scaling term $\Phi(W,K)$ is calculated each iteration after the m
 %\end{equation}
 
 
-It is amazing how much noise EMC can tolerate, before it is unable to retrieve orientations [private discussions Tomas]. Even is the noise model is not accurate. For the success of model assembly, it seems more important for EMC to, initially when the model is far from true, have the option to place diffraction patterns in a wide distributions of orientations, than it is to know exactly which noise distribution it uses.
+It is amazing how much noise EMC can tolerate, before it is unable to retrieve orientations [private discussions Tomas]. Even is the noise model is not accurate. For the success of model assembly, it seems more important for EMC to, initially when the model is far from true, have the option to place diffraction patterns in a wide distributions of orientations, than it is to know the behaviour of the noise exactly.
 
 
-\subsection{Multi-model EMC}
-EMC can be extended to is on its way that can generate multiple models of the same particle. It is very similar to single state EMC, but differs in the fact that it build multiple self-consistent models. 
+%\subsection{Multi-model EMC}
+%Often biomolecules are not static in their structure, but rather are flexible units, that structurally undergo small local changes, or sometimes even large global changes. So far FXI has not been shown to which means that the diffraction patterns sample the structural variation (or conformational landscape). This gives FXI the large potential of being able to map the conformational landscape of each protein, at room temperature. This makes it impossible to create one single structure from all diffraction pattern. Currently an EMC version is being developed that can be assemble multiple models from the data, and tries to deal with the structural heterogeneity is this way. It is very similar to single state EMC, but differs in the fact that it builds multiple self-consistent models. 
