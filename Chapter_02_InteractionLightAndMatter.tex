@@ -1,10 +1,12 @@
-\part{Concept}%
+%\part{Concept}%
 
 \chapter{Interaction of Light and Matter}
-Traditionally cells have been studied with optical light. To understand why light is a good probe to study cells, it is necessary to understand the nature of its interaction with matter. This chapter will create the mathematical framework that describes how light behaves in our diffraction experiments. 
+Traditionally cells and cellular structures have been studied with optical light. To understand why light is a good probe to study cells, it is necessary to understand the nature of its interaction with matter. This chapter will create the mathematical framework that describes how light behaves in our diffraction experiments. 
 
 \section{Light as electromagnetic radiation}
-In the 17th and 18th century it became possible for humans to generate electric charges and continuous currents [Guericke, Leiden, Volta], enabling the investigation of the phenomena of electricity and magnetism. This ultimately led to a ground-breaking work by Maxwel where he ties together the fields of magnetism, electricity, and somewhat surprisingly, optics. His results are known as the Maxwell equations:
+Following the first look into the micro-world by Stelluti and Cesi \cite{Stelluti1625}, using a compound microscope built by Galilei, and by the spectacular discoveries of Anton Van Leeuwenhoek with his compact microscope\cite{VanLeeuwenhoek1676}, biology underwent a fundamental transformation. Light microscopy revealed the existence of cells, tissues, microorganisms and many other biological structures and phenomena. A deeper understanding of the nature of light came about much later.
+
+Theoretical and experimental advances in the 19th century established the wave properties of light. A dramatic change took place in the 1860s, when James Clerk Maxwell unified the fields of electricity, magnetism, and somewhat surprisingly, optics. His results are known as the Maxwell equations:
 
 \begin{equation} \nabla \cdot   \vec{E} = \frac{\rho}{\varepsilon_0 }\label{eq:maxlaw1}\end{equation}
 \begin{equation} \nabla \cdot   \vec{B} = 0 \label{eq:maxlaw2}\end{equation}
@@ -30,7 +32,7 @@ In order to understand why these laws unify magnetism, electricity and optics, w
 \begin{equation} \nabla \cdot   \vec{E} = 0 \label{eq:maxlaw1_vac}\end{equation}
 \begin{equation} \nabla \times \vec{B} = -\mu_0\varepsilon_0\frac{d\vec{E}}{dt}\label{eq:maxlaw4_vac}\end{equation}
 
-Furthermore, experiments showed that the permittivity for vacuum, $\varepsilon_0 = 8.854\cdot10^{-12} Fm^{-1}$, and the permeability for vacuum$mu_0 = 1.257 \cdot 10^{-7} N A^{-2}$. If we now ask ourselves what the field change caused by a change in the electric field is by studying the equation $\nabla \times( \nabla \times \vec{E}) $, we can derive something quite amazing:  
+Furthermore, experiments showed that the permittivity for vacuum, $\varepsilon_0 = 8.854\cdot10^{-12} Fm^{-1}$, and the permeability for vacuum $\mu_0 = 1.257 \cdot 10^{-7} N A^{-2}$. If we now ask ourselves what the field change caused by a change in the electric field is by studying the equation $\nabla \times( \nabla \times \vec{E}) $, we can derive something quite amazing:  
 \[ \nabla \times( \nabla \times \vec{E}) = \nabla (\nabla \cdot
 \vec{E}) -\nabla^2 \vec{E} =-\nabla^2 \vec{E} \]
 The first equality is a well known mathematical relation, and for the second equality equation \ref{eq:maxlaw1_vac} is used. 
@@ -45,14 +47,14 @@ In the first equality we used equation \ref{eq:maxlaw3}. In the second equality 
 \frac{d^2\vec{E}}{dt^2} = \frac{1}{\mu_0\varepsilon_0}\nabla^2 \vec{E} = v^2 \nabla^2 \vec{E},      v = \frac{1}{\sqrt{\mu_0\varepsilon_0}}
 \end{equation}
 
-Equation \ref{eq:wave_eq} is known as the wave equation, which is used to describe the propagation of a wave with the speed $v$. Combining this results with the experimentally determined value for $\mu_0$ and $\varepsilon_0$ shows that electromagnetic (EM) waves travel at \(3\cdot 10^8 \frac{m}{s}\), which agreed with value of the speed of light \cite{Froome1971}. This result strongly hints at the possibility that light is an electromagnetic wave. Further experiments succeeded in demonstrating the existence of electromagnetic waves with long wavelengths and showed that their properties are consistent with the properties of visible light, including their velocity. Visible light has now become part of the broader spectrum of electromagnetic radiation. Although Quantum Mechanics complicated the description of light further, as light demonstrates particle-like behaviour under certain conditions. Many phenomena however can be described by treating light as a wave. 
+Equation \ref{eq:wave_eq} is known as the wave equation, which is used to describe the propagation of a wave with the speed $v$. Combining this results with the experimentally determined value for $\mu_0$ and $\varepsilon_0$ shows that electromagnetic (EM) waves travel at \(3\cdot 10^8 m s^{-1}\), which agreed with value of the speed of light \cite{Froome1971}. This result strongly hints at the possibility that light is an electromagnetic wave. Further experiments succeeded in demonstrating the existence of electromagnetic waves with long wavelengths and showed that their properties are consistent with the properties of visible light, including their velocity. Visible light has now become part of the broader spectrum of electromagnetic radiation. Although Quantum Mechanics complicated the description of light further, as light demonstrates particle-like behaviour under certain conditions, many phenomena however can be described by treating light as a wave. 
 
 \section{Photon-material interactions}
-Assuming that light is electromagnetic radiation, it is easy to understand that a change in electric field will affect its propagation. There are four mechanisms through which radiation interacts with matter: photoabsorption, scattering, photo-nuclear absorption and pair production. The description of these phenomena will treat as if light will come in discrete quanta: photons. 
-Photonuclear absorption and pair production only occur when matter is exposed to high energy gamma rays, and are therefore of little relevance to this thesis. Photoabsorption is facilitated primarily through a process called photoexcitation, in which an electron is excited to a higher level of energy, or possibly ionized in the case of photoionisation. Scattering can be divided into two classes: elastic scattering and inelastic scattering. Elastic scattering does not result in a change of kinetic energy of the scattering particle, nor does it change the wavelength of the radiation. Only the direction of the radiation can be changed. Inelastic scattering leads to both a change in wavelength of the radiation, and a change in kinetic energy. Photo-absorption and inelastic scattering deposit energy into the object which will lead to structural changes of the object. Elastic scattering on the other hand can be used to gain structural information about the object, without causing damage to the object. 
+Assuming that light is electromagnetic radiation, it is easy to understand that a change in electric field will affect its propagation. There are four mechanisms through which radiation interacts with matter: photoabsorption, scattering, photo-nuclear absorption and pair production. The description of these phenomena is treated as if light will come in discrete quanta: photons. 
+Photonuclear absorption and pair production only occur when matter is exposed to high energy gamma rays, and are therefore of little relevance to this thesis. Photoabsorption is facilitated primarily through a process called photoexcitation, in which an electron is excited to a higher level of energy, or possibly ionized in the case of photoionisation. The resulting vacancy is repopulated within femtoseconds by Auger decay and fluorescence. Auger decay results in shake-up ans shake-off excitations of other electrons \cite{Persson2001}, and therefore leads to a cascade of ionisations. Scattering can be divided into two classes: elastic scattering and inelastic scattering. Elastic scattering does not result in a change of kinetic energy of the scattering particle, nor does it change the wavelength of the radiation. Only the direction of the radiation can be changed. Inelastic scattering leads to both a change in wavelength of the radiation, and a change in kinetic energy. Photo-absorption and inelastic scattering deposit energy into the object, which will lead to structural changes within the object. Elastic scattering on the other hand can be used to gain structural information about the object, without causing damage to the object. 
 
 \section{Scattering by a single free electron}
-The simplest example of elastic scattering is Thompson scattering from a free electron. A free electron will scatter or diffract the incoming radiation in all directions. An important physical concept for understanding scattering on a deeper level is the Lorentz force which describes the force exerted on a charged particle travelling in a electromagnetic field. 
+The simplest example of elastic scattering is Thompson scattering from a free electron. A free electron will scatter or diffract the incoming radiation in all directions. An important physical concept for understanding scattering on a deeper level is the Lorentz force which describes the force exerted on a charged particle travelling in an electromagnetic field. 
 \begin{equation}\label{eq:lorentz}
 \vec{F} = q\vec{E} + q\vec{v}\times\vec{B}
 \end{equation} 
@@ -63,10 +65,10 @@ proportional and parallel, thus the Lorentz force describes the acceleration of 
 According to classical electromagnetic theory the electric field associated with a monochromatic plane wave of amplitude $E_0$, and wavelength $\lambda$, propagating in the z-direction can be described by: 
 
 \begin{equation}\label{eq:plane_wave}
-\vec{E_{in}} = E_0 e^{-2\,\pi\ i \frac{ c t }{\lambda}}
+E_{in} = E_0 e^{-2\,\pi\ i \frac{ c t - z}{\lambda}}
 \end{equation} 
 
-When the oscillating electric field of the incident EM wave hits a stationary electron of mass $m_e$ and charge $e$ located at position $z = 0$, it exerts a Coulombic force on the electron which causes it to oscillate at the same frequency as the incident radiation. By Newton's second law of motion:
+When the oscillating electric field of the incident electromagnetic wave hits a stationary electron of mass $m_e$ and charge $e$ located at position $z = 0$, it exerts a Coulombic force on the electron, which causes it to oscillate at the same frequency as the incident radiation. By Newton's second law of motion:
 
 \begin{align}\label{eq:motion_single}
 \vec{F} = m_e \vec{a}(t) =& e E_0 e^{-2\,\pi\ i \frac{ c t}{\lambda}} \\
@@ -74,10 +76,10 @@ When the oscillating electric field of the incident EM wave hits a stationary el
 \end{align}
 
 Here we assumed the contribution of the magnetic part of field to be negligible, as the electron will not reach a significant velocity.
-An accelerated charge emits electromagnetic radiation. The oscillating electron becomes a new source of radiation that radiates spherically in all directions, at the same frequency as the incident radiation. From Maxwell's equations it follows that the electric field generated by an accelerating electron measured at point $\vec{d}$  can be described as []:
+An accelerated charge emits electromagnetic radiation. The oscillating electron becomes a new source of radiation that radiates spherically in all directions, at the same frequency as the incident radiation. From Maxwell's equations it follows that the electric field generated by an accelerating electron measured at point $\vec{d}$  can be described as:
 
 \begin{equation}\label{eq:scattering}
-\vec{E_s}(\vec{d},t) = \frac{e a_\perp(t)}{4 \pi \varepsilon_0c^2d}
+{E_s}(\vec{d},t) = \frac{e a_\perp(t)}{4 \pi \varepsilon_0c^2d}
 \end{equation}
 
 $a_{\perp}(t)$ is the acceleration projected on a plane perpendicular to $\vec{d}$. 
@@ -99,16 +101,16 @@ r_e =& \frac{e^2}{4 \pi \varepsilon_0 m_e\,c^2}
 
 \section{Two-body scattering}
 %\subsection{Approximations} 
-If more than one electron are present the scattered waves will interfere, similar to the interference of water waves. The resulting pattern of dark and light bands is called a diffraction pattern. The first person to report this phenomenon was Grimaldi in 1660. Whether the interference is constructive of destructive depends on the optical path difference (OPD) between the scattered waves. Waves with path differences close to integer numbers of wavelengths interfere constructively, if close to half integral waves will interfere destructively. The central light band is often referred to as the zeroth diffraction order, or more colloquially as the central speckle. The light band next to it is called the first diffraction order (or first fringe), the one next to that the second order and so on. These terms will be used throughout the thesis. Figure \ref{fig:Interference} illustrates the phenomenon of interference.
+If more than one electron are present the scattered waves will interfere, similar to the interference of water waves. The resulting pattern of dark and light bands is called a diffraction pattern. The first person to report this phenomenon was Grimaldi in 1660. Whether the interference is constructive or destructive depends on the optical path difference (OPD) between the scattered waves. Waves with path differences close to integer numbers of wavelengths interfere constructively, if close to half integral waves will interfere destructively. The central light band is often referred to as the zeroth diffraction order, or more colloquially as the central speckle. The light band next to it is called the first diffraction order (or first fringe), the one next to that the second order and so on. These terms will be used throughout the thesis. Figure \ref{fig:Interference} illustrates the phenomenon of interference.
 
 \begin{figure}[h]
 \centering 
 \includegraphics[width=120mm]{Chapter_02_InterferenceTwoElectrons.png}
-\label{fig:Interference}
-\caption{Illustration of the scattering from two free-electrons. a) The two blue dots represent two independently scattering free-electrons. The rings represent the maxima of the two scattered waves. One can see the a light-dark band structure appear, characteristic of a interference pattern. b) mathematical description of the path length difference between two waves arriving at point $\vec{d}$. $\hat{s}_{in}$ and $\hat{s}_{out}$ are unit vector pointing in the direction of the incident wave and the out going wave respectively. $\vec{r}$ is a position vector describing the relative distance between the two electrons. }
+\caption{Illustration of the scattering from two free-electrons. a) The two blue dots represent two independently scattering free-electrons. The rings represent the maxima of the two scattered waves. One can see the a light-dark band structure appear, characteristic of a interference pattern. b) mathematical description of the path length difference between two waves arriving at point $\vec{d}$. $\hat{u}_{in}$ and $\hat{u}_{out}$ are unit vector pointing in the direction of the incident wave and the out going wave respectively. $\vec{r}$ is a position vector describing the relative distance between the two electrons. }\label{fig:Interference}
+
 \end{figure}
 
-If the diffraction pattern is measured at point \(\vec{d}\), far away from the diffracting object itself, both scattered fields have approximately the same field strength since the distance from both electrons to the detector is about equal. In Figure \ref{fig:Interference} this means that  $|\vec{d}+x_1| \approx |\vec{d}|$, and that both $\hat{s}_out$ are parallel. This approximation is called the far-field approximation. The Fresnel number (FN) is used to verify the validity of the far-field approximation.
+If the diffraction pattern is measured at point \(\vec{d}\), far away from the diffracting object itself, both scattered fields have approximately the same field strength since the distance from both electrons to the detector is about equal. In Figure \ref{fig:Interference} this means that  $|\vec{d}+x_1| \approx |\vec{d}|$, and that both $\hat{u}_{out}$ are parallel. This approximation is called the far-field approximation. The Fresnel number (FN) is used to verify the validity of the far-field approximation.
 \begin{equation} 
 FN = \frac{o^2}{d\lambda}
 \end{equation}
@@ -123,12 +125,12 @@ E(\vec{d}) = E_s(\vec{d})+E_s(\vec{d}) e^{\frac{2 \pi\,i\,\Delta x}{\lambda}}
 \end{equation}
 $\Delta x$ is the optical path difference between the two scattered waves due to the relative difference in position. $\Delta x$ can be determined by summing $x_0$ which is the path difference of the incoming radiation and $x_1$ which is the path difference of the outgoing radiation. Both $x_0$ and $x_1$ can be described using the difference vector $\vec{r}$: 
 \begin{equation}
-\Delta x = x_0 - x_1 =\hat{s}_{out} \cdot \vec{r}-\hat{ s}_{in}\cdot \vec{r} = (\hat{s}_{out} -\hat{s}_{in} ) \cdot \vec{r} 
+\Delta x = x_0 - x_1 =\hat{u}_{out} \cdot \vec{r}-\hat{u}_{in}\cdot \vec{r} = (\hat{u}_{out} -\hat{u}_{in} ) \cdot \vec{r} 
 \end{equation}
 
 By defining the scattering vector $\vec{S}$
 \begin{equation}\label{eq:ScatteringVector}
-\vec{S} = \frac{\hat{s}_{out}}{\lambda} - \frac{\hat{s}_{out}}{\lambda}\\ = \vec{s_{out}}-\vec{s_{in}}
+\vec{S} = \frac{\hat{u}_{out}}{\lambda} - \frac{\hat{u}_{in}}{\lambda}\\ = \vec{s}_{out}-\vec{s}_{in}
 \end{equation}
 the diffraction pattern of two electrons van be written as:
 \begin{equation}
@@ -149,17 +151,17 @@ where n identifies the individual electrons.
 In biological particles the incoming EM radiation is scattered by electrons that are part of atoms, instead of being scattered by free electrons. As we will see, this has a major effect on the scattering process. The scattering potential $\rho(\vec{r},\lambda)$ describes the scattering from a single atom in comparison to the scattering by a free electron. At X-ray wavelengths $\rho(\vec{r},\lambda)$ can be approximated by:
 
 \begin{equation}
-\rho(\lambda.\vec{r}) = -r_e (f_1 + i\,f_2)
+\rho(\lambda,\vec{r}) = -r_e (f_1 + i\,f_2)
 \end{equation}
-Here, $r_e$ is the classical electron radius. $f_2$ is derived from the atomic photoabsorption cross section and is a measure of absorption [booklet]. $f_2$ becomes very relevant close to an absorption edge of the material. $f_1$ describes the scattering power of an atom. It is related to the imaginary part by the Kramers-Kronig dispersion relation [Kramers]. At high photon energies $f_1$ approaches the atomic number of an atom.  
+Here, $r_e$ is the classical electron radius. $f_2$ is derived from the atomic photoabsorption cross section and is a measure of absorption \cite{booklet}. $f_2$ becomes very relevant close to an absorption edge of the material. $f_1$ describes the scattering power of an atom. It is related to the imaginary part by the Kramers-Kronig dispersion relation \cite{Kronig1926}. At high photon energies $f_1$ approaches the atomic number of an atom.  
 
-For most elements, the exact value of $f_1$ and $f_2$ have been determined experimentally for a wide range of photon-energies \cite{Henke1990}. Figure \ref{fig:waterwindow} presents the scattering factors of two elements: carbon and oxygen. The energy range from 282-533 eV (4.40 nm - 2.33 nm) is called the water window. In this region, and especially towards the higher energies, oxygen atoms and thus water, are scattering significantly less than the carbon atoms that  make up organic biomolecules. The water window is therefore a good candidate for imaging cells, as the contrast between two of their main constituents, water and biomolecules, is enhanced.
+For most elements, the exact values of $f_1$ and $f_2$ have been determined experimentally for a wide range of photon-energies \cite{Henke1993}. Figure \ref{fig:waterwindow} presents the scattering factors of two elements: carbon and oxygen. The energy range from 282-533 eV (4.40 nm - 2.33 nm) is called the water window. In this region, and especially towards the higher energies, oxygen atoms and thus water, are scattering significantly less than the carbon atoms that  make up organic biomolecules. The water window is therefore a good candidate for imaging cells, as the contrast between two of their main constituents, water and biomolecules, is enhanced, but resolution is limited by the rather long wavelength.
 
 \begin{figure}[h]
 \centering 
 \includegraphics[width=80mm]{Chapter_02_WaterWindow.png}
 \label{fig:waterwindow}
-\caption{Atomic scattering factors $f_1$ and $f_2$ of carbon and oxygen, as a function of photon-energy of the X-ray radiation. The region between the absorption K-edge of carbon (282 eV, 4.40 nm) and the K-edge of oxygen (533 eV, 2.33 nm) is called the water window.  The contrast between biomolecules and water is enhanced in this region, especially towards higher photon energies. These wavelengths could be used for imaging living biological particles such as cells or organelles.}
+\caption{Atomic scattering factors $f_1$ and $f_2$ of carbon and oxygen, as a function of photon-energy of the X-ray radiation. The region between the absorption K-edge of carbon (282 eV, 4.40 nm) and the K-edge of oxygen (533 eV, 2.33 nm) is called the water window.  The contrast between biomolecules and water is enhanced in, especially towards higher photon energies, this region. These wavelengths could be used for imaging living biological particles such as cells or organelles.}
 \end{figure}
 
 The scattered field can now be described as follows:
@@ -186,7 +188,7 @@ Equation \ref{eq:cont} can be rewritten as:
 F(\vec{S}) = \int \rho(\vec{r},\lambda) \exp^{-2\pi i \,\vec{S} \cdot \vec{r}}\,d\vec{r}
 \end{equation}
 
-This equation is very similar to a well known Fourier transformation $\mathcal{F}( g( t ) )$ []. 
+This equation is very similar to the well known Fourier transformation $\mathcal{F}( g( t ) )$ \cite{Vretblad2003}. 
 
 \begin{equation}
  G(\omega) = \int g(t) e^{-2 \pi i \omega\, t}\,dt
@@ -195,12 +197,12 @@ This equation is very similar to a well known Fourier transformation $\mathcal{F
 Equation \ref{eq:diff_equation} is very convenient as we now know that, in the far-field, the scattering of a plane wave is proportional to the Fourier transform of the scattering potential evaluated at $\vec{S}$.
 
 We can now also define the inverse relation of \ref{eq:diff_equation}:
-\begin{equation}
+\begin{equation}\label{eq:inverse}
 \rho(\vec{r}) = \mathcal{F}^{-1} ( F(\vec{S}) ) = \frac{1}{2\,\pi}\int F(S) \exp^{2\pi i \,\vec{S} \cdot \vec{r}}\,d\vec{S}
 \end{equation}
 
 
-\section{the Ewald Sphere}
+\section{The Ewald Sphere}
 
 \begin{figure}[h]
 	\centering 
@@ -211,10 +213,10 @@ We can now also define the inverse relation of \ref{eq:diff_equation}:
 
 The molecular transform $F(\vec{S})$ of a three-dimensional object is also three-dimensional. A diffraction pattern, however, is not. To understand this, we have to evaluate $\vec{S}$ more carefully. 
 
-In a diffraction experiment $\vec{S} = \vec{s}_{out} -\vec{s}_{in}$ (see equation \ref{eq:ScatteringVector},). $\vec{s}_{in}$ is constant, and is determined by the propagation direction of the incoming EM field. $\vec{s}_{out}$ has a fixed length ($1/\lambda$), and points in the direction of the scattered field ($\theta$). The scattering vector $\vec{S}$ is therefore limited to reside on the surface of a sphere of radius $1/\lambda$. This sphere is called the Ewald sphere [] (see Figure \ref{fig:EwaldSphere}). 
+In a diffraction experiment $\vec{S} = \vec{s}_{out} -\vec{s}_{in}$ (see equation \ref{eq:ScatteringVector},). $\vec{s}_{in}$ is constant, and is determined by the propagation direction of the incoming EM field. $\vec{s}_{out}$ has a fixed length ($1/\lambda$), and points in the direction of the scattered field ($\theta$). The scattering vector $\vec{S}$ is therefore limited to reside on the surface of a sphere of radius $1/\lambda$. This sphere is called the Ewald sphere \cite{Ewald1969} (see Figure \ref{fig:EwaldSphere}). 
 
 
-The Ewald sphere intersects the $F(S)$ through its center $F(0)$. At small scattering angles the curved Ewald sphere can considered to be flat. This means that a diffraction pattern can be approximated as slice through the center of the molecular transform.  This relation will prove itself to be very useful.
+The Ewald sphere intersects the $F(S)$ through its center $F(0)$. At small scattering angles the curved Ewald sphere can be considered to be flat. This means that a diffraction pattern can be approximated as slice through the center of the molecular transform.  This relation will prove itself to be very useful.
 
 \section{Properties of the Fourier transform}
 There is a large mathematical field describing the properties of Fourier transformations. A few of these relations are very useful to this thesis.
@@ -236,11 +238,11 @@ f(t) * g(t) = \int f(\tau)g(t-\tau)\,d\tau = \mathcal{F}^{-1} \left( \mathcal{F}
 \end{equation}
 
 \item {Projection Approximation}\\
-The projection slice theorem states that the Fourier transform of the projection of an three-dimensional function g(t) onto an two-dimensional plane is equal to an two-dimensional slice through the origin of the three-dimensional Fourier transform of the function g(t)
-which is parallel to the projection plane. At small scattering angles, a diffraction pattern is a slice through the center of the three-dimensional Fourier transform. In this case the results of equation can be interpreted as a projection of the scattering potential. 
+The projection slice theorem states that the Fourier transform of the projection of a three-dimensional function g(t) onto a two-dimensional plane is equal to a two-dimensional slice through the origin of the three-dimensional Fourier transform of the function g(t)
+which is parallel to the projection plane. At small scattering angles, a diffraction pattern is a slice through the center of the three-dimensional Fourier transform. In this case the results of equation \ref{eq:inverse} can be interpreted as a projection of the scattering potential. 
 
 \item {Discrete Fourier Transform}\\
-In practice we are dealing with a signals that are not continuous, but discrete. Most signal recording is done digitally, and to be able to do numerical computations on the signal, it has to be digitized as well. For discrete signal the discrete Fourier transform (DFT) and the inverse discrete Fourier transform (IDFT) can be used.
+In practice we are dealing with signals that are not continuous, but discrete. Most signal recording is done digitally, and to be able to do numerical computations on the signal, it has to be digitized as well. For discrete signal the discrete Fourier transform (DFT) and the inverse discrete Fourier transform (IDFT) can be used.
 
 \begin{equation}
 DFT( g( T_{k,l,m} ) ) = G( \Omega_{k,l,m} ) = \sum_{k=1}^{K} \sum_{l=1}^{L} \sum_{m=1}^{M} g( T_{k,l,m} ) e^{-2 \pi i \Omega_{k,l,m} \cdot T_{k,l,m}}
@@ -255,12 +257,11 @@ where $K$,$L$ and $M$ are the number of 3D pixels (voxels) in each dimensions. $
 \end{enumerate}
 
 \section{Radiation Damage}
-The scattering power of an object is proportional to its volume, and thus varies with the 3rd power of its size. The smaller an object is, the less scattering occurs. To compensate for this loss in scattered signal, the required dose for imaging increases. Practically this means that a dose in excess of 100 MGy is required to record an interpretable signal from a living cell. To put this in perspective, a dose of 2000 Gy is already enough to kill an organism that lives on earth. This means that the amount of energy deposited into the system through photoabsorption is not negligible. The main process of photoabsorption at soft-X-ray wavelengths is  photoionisation. Many process follow the ionization event, of which non-radiative Auger decay can lead to significant radiation damage throughout the material. The relation between the required dose of radiation versus the maximum tolerable dose of radiation posed a physical limit to the obtained resolution for imaging single biomolecules [Howell].
+The scattering power of an object is proportional to its volume, and thus varies with the third power of its size. The smaller an object is, the less scattering occurs. To compensate for this loss in scattered signal, the required dose for imaging increases. Practically this means that a dose in excess of 100 MGy is required to record an interpretable signal from a living cell. To put this in perspective, a dose of 2000 Gy is enough to kill practically any organism that live on earth \cite{Fairand2002,Game2005}. This means that the amount of energy deposited into the system through photoabsorption is not negligible. The main process of photoabsorption at soft-X-ray wavelengths is  photoionisation. Many process follow the ionization event, of which non-radiative Auger decay can lead to significant radiation damage throughout the material. The relation between the required dose of radiation versus the maximum tolerable dose of radiation posed a physical limit to the obtainable resolution when imaging single biomolecules \cite{Howells2009}.
 
-\section{Diffract-before-destroy}
-An elegant solution to the problem of radiation damage came from the realization that elastic scattering occurs on a  time scale shorter than the damage processes manifest themselves structurally. This principle is of diffract-before-destroy, suggested in 2000 by Neutze \textit{et al.} \cite{Neutze2000}, was experimentally demonstrated on a silicon-nitrate sample \cite{Chapman2009}. This experiment used the ultra short and extremely bright pulses from the first x-ray free-electron laser to outrun key damage processes \cite{Chapman2000}. Although the pulse literally obliterated the sample, enough structural information was captured to retrieve the original structure. A single XFEL pulse has a power densities of $10^{16} W/cm^2$, and can be between 1-100 fs long. This facilitates the imaging of single particles at room temperature.
+\section{Diffraction before destruction}
+An elegant solution to the problem of radiation damage came from the realization that elastic scattering occurs on a  time scale shorter than the damage processes manifest themselves structurally. The principle of diffraction before destruction, suggested in 2000 by Neutze \textit{et al.} \cite{Neutze2000}, was experimentally demonstrated on a silicon-nitride sample \cite{Chapman2006}. This experiment used the ultra short and extremely bright pulses from the first x-ray soft free-electron laser to outrun key damage processes. Although the pulse literally obliterated the sample, enough structural information was captured to retrieve the original structure. 
 
-Diffract-before-destroy has been further validated by a wide variety of experiments \cite{Seibert2009,Seibert2010}. Serial femtosecond crystallography (SFX) showed that with this principle at least three orders of magnitude higher radiation doses are tolerated compared to regular crystallography, enabling the imaging of much smaller crystals []. The imaging of single particle has been shown feasible in 2D for a wide variety of biological particles, ranging from \textit{living} cells (\textbf{Paper I}) to cell organelles (\textbf{Paper VXIII}) to  40 nm viruses (\textbf{Paper XIV}). \textbf{Paper XVII} shows the experimental feasibility of using many 2D images to construct a 3D model of a giant virus.
+Diffraction-before-destruction has been further validated by a wide variety of experiments \cite{Seibert2010,Seibert2011}. Serial femtosecond crystallography (SFX) showed that with this principle at least three orders of magnitude higher radiation doses are tolerated compared to regular crystallography, enabling the imaging of much smaller crystals \cite{Chapman2011}. The imaging of single particles has been shown to be feasible in 2D for a wide variety of biological particles, ranging from \textit{living} cells (\textbf{Paper I}) to cell organelles (\textbf{Paper VXII}) to  40 nm viruses (\textbf{Paper XIII}). \textbf{Paper XVI} shows the experimental feasibility of using many 2D images to construct a 3D model of a giant virus.
 
-The field is very close to measuring the first 2D diffraction patterns of single proteins. For simulated data it has been shown that such patterns can be used to recover the 3D shape of proteins, even though the number of scattered photons might be as low a 1000 photons per frame. The ultra short pulses also allow for the studying of the dynamics of such systems, either by separating the images from different naturally occurring conformational states, or by identifying structural changes subsequent to an external trigger []. In the more distant future these structural changes might be tracked inside living cells. 
  

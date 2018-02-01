@@ -1,48 +1,48 @@
 \chapter{Three dimensional Reconstructions}
-So far we have dealt with two-dimensional diffraction patterns. Although much can be learned (and has been learned) from two-dimensional images, having a three-dimensional model is essential to understand the functioning of biomolecules. From chapter 2 we know that a diffraction pattern samples a curved slice through the center of the molecular transform of the object. If the same object would be illuminated from different angles, the resulting diffraction patterns together could sample the complete three-dimensional molecular transform. The approach in which multiple two-dimensional images from different angles of illumination are combined into one three-dimensional image is called tomography.%This chapter will describe what possibilities there exist to recover the three-dimensional structure of bioparticles using single particle FXI. It will start by describing several methods that use o recover structure of particles that are reproducible in shape such as many viruses and rigid proteins, and after that discusses the poss
+So far we have dealt with two-dimensional diffraction patterns. Although much can be learned from two-dimensional images, a three-dimensional model is essential to understand the function of biomolecules.
+From Chapter 2 we know that a diffraction pattern samples a curved slice through the center of the molecular transform of the object. If the same object would be illuminated from different angles, the resulting diffraction patterns together could sample the complete three-dimensional Fourier transform. The approach in which multiple two-dimensional images from different angles of illumination are combined into one three-dimensional image is called tomography.%This chapter will describe what possibilities there exist to recover the three-dimensional structure of bioparticles using single particle FXI. It will start by describing several methods that use o recover structure of particles that are reproducible in shape such as many viruses and rigid proteins, and after that discusses the poss
 
 \section{Reproducible Particles}
+In single particle FXI the illuminated particle is completely destroyed by the pulse. To date, it has therefore not been possible to image one particle multiple times using FXI. Some bioparticles however, are structurally reproducible. This means that diffraction patterns originating from different copies sample the same molecular transform, and can thus be combined to form the 3D fourier transform of the object. 
 
-In single particle FXI the illuminated particle is completely destroyed by the pulse. Up to date, it has therefore not been possible to image one particle multiple times. Some bioparticles however, are structurally reproducible. This means that diffraction patterns originating from different copies sample the same molecular transform, and thus can be combined to assemble the 3D fourier transform of the object. 
+In order to successfully assemble the 3D molecular transform from multiple diffraction patterns, their relative orientations need to be known. Most of the time this information is unavailable as the sample delivery methods do not allow for orientation selection. A variety of reconstruction algorithms have been proposed for recovering the relative orientation of diffraction data, including the EMC algorithm \cite{Loh2009}, the manifold embedding (ME) set of algorithms \cite{Giannakis2010}, common-arc algorithm \cite{Bortel2011}, and multi-particle cross-correlation analysis \cite{Kam1977, Saldin2010, Kirian2011}. Theoretical studies suggest that the determination of diffraction pattern orientation should be possible even with photon counts as little as 100 scattered photons per image \cite{Loh2009}.
 
-In order to successfully assemble the 3D molecular transform from multiple diffraction patterns, their relative orientations need to be known. Most of the time this information is unavailable as the sample delivery methods do not allow for orientation selection. A variety of reconstruction algorithms have been proposed for recovering the relative orientation of diffraction data, including the EMC algorithm [Loh], the manifold embedding (ME) algorithm [Giannakis], common line algorithm [Tegze], and multi-particle cross-correlation analysis [Kam, Saldin, Kirian, Paper IV]. Theoretical studies suggest that the determination of diffraction pattern orientation should be possible even with photon counts of as little as 1000 scattered photons per image [Loh].
+\section{The Common Arc algorithm}
 
-Common Lines
+Two diffraction patterns of the same object, will sample the same Fourier space. Because both diffraction patterns will slice the Fourier transform through the origin, both patterns must have at least an arc in common. The common arc algorithm uses this knowledge to find the relative orientation between two diffraction patterns. In short this algorithm can be described as follows. For each pair of patterns all possible arcs between the two pattern are compared and the best match is chosen as the true one. Based on the retrieved relative orientations between many pairs of patterns a full 3D model can be assembled. This method is successful as long as the diffraction patterns are not very noisy \cite{Tegze2012}. Too much noise makes the comparison between diffraction patterns unreliable.
 
-As the example in figure 2 illustrates, two planes that intersect a common origin will always have at least a line in common. The common line algorithm[], uses this knowledge as a basis. In short this algorithm can be described as follows. For each pair of patterns all possible arcs between the two pattern are compared and the best match is chosen as the true one. Based on the retrieved relative orientations a full 3D model can be assembled. This works, as long as the diffraction patterns are not very noisy, as noise will make the comparison unreliable.
+\section{The expansion maximization compression (EMC) algorithm}
+The expansion maximization compression (EMC) algorithm is an iterative algorithm. In each iteration the measured 2D diffraction patterns ($K_j$), where $j$ is the index of each pattern, are used to update a model of the molecular transform of the object ($M^{MT}$). The starting model can be chosen to be random, or if more is known about the model, this information could be incorporated. 
 
-\section{the expansion maximization compression (EMC) algorithm}
-The expansion maximization compression (EMC) algorithm is an iterative program. On the one side there are the 2D measured diffraction patterns ($K_j$), where $j$ is the index of each pattern. On the other side a there is a 3D model of the molecular transform of the object ($M^{MT}$). Note that model and the true molecular transform do not have to be the same, especially in the initial iterations. The starting model can be chosen to be random, or if more is known about the model, this information could be incorporated. As the latter might lead to model bias, thus it might even be a strength to start with a random model.
+\subsection{Expand} 
 
-Expand 
+Each iteration starts with the expand step in which the 3D model is expanded in all possible 2D slices throught the center, up to a specified angular accuracy. These slices are denoted $W_k$, where $k$ is the index of each slice. These slices represent the possible diffraction patterns given model $M^{MT}$. 
 
-Each iteration starts with the expand step in which the 3D model is expanded in all possible 2D slices throught the center ($W_k$), where $k$ is the index of each slice. These slices represent all possible diffraction patterns given model $M^MT$. 
-
-Maximization 
+\subsection{Maximization} 
 
 In the next step, each of the slices is compared to each diffraction pattern. This results in a matrix $R_{j,k}$ that describes how well each diffraction pattern fits in each orientation. The distance metric used for comparing the measured pattern to the predicted pattern often makes use of the noise type that affected the measurement. For instance, if you know that your measurement is only affected by shot noise one could use a Poissonian distance metric:
 \begin{equation}
-d_{Poisson}(W,K) = \frac{e^(-W_i)W_i^(K_i)}{K_i !}
+d_{Poisson}(W,K) = \frac{e^{-W_i}W_i^{K_i}}{K_i !}
 \end{equation}
 Here $i$ indicates the i-th pixel.
 
 If you know your measurement is affected by a source that follows a Gaussian distribution $d_Gaussian$ can be used.
 \begin{equation}
-d_{Gaussian}(W,K) = e^{\frac{(W_i-K_i)^2}{2\sigma^2}}
+d_{Gaussian}(W,K) = e^{-\frac{(W_i-K_i)^2}{2\sigma^2}}
 \end{equation}
-Here $\sigma$ is the width of the noise distribution. 
+Here $\sigma$ is the width of the noise distribution. Each slice in the expanded model is then updated by summing up the measured diffraction patterns weighted by the coefficients from $R_{i,j}$. This will localize the patterns to the orientations where they fit best.
 
-Compression
+\subsection{Compression}
 
-In the final step a new model $M^MT$ is generated, based on placing the measured diffraction patterns in orientations where they fit best. This step is called the compression step. The exact way of assigning the orientation for each pattern varies from the implementation of EMC that is used. Originally the patterns were distributed over all possible orientations using a weight proportional to $R_{i,j}$. Other implementations place a measured pattern only in the orientation that fits best (as is done in common lines).
+In the final step a new model $M^{MT}$ is generated by putting back to updated slices $W_k$ in their respective orientations. This will enforce that the slices in the next expanded model will be internally consitent with each other.
 
-Fluence recovery
+\subsection{Fluence recovery}
 
-So far we have assumed that the diffraction patterns from reproducible particles sample the same molecular transform. This is true as long as $E_0$, the strength of the x-ray pulse that hit the particle, is the same for each exposure. This we know is not the case (see chapter 3). Due to the randomness of the SASE process the power of the pulse does fluctuate from shot to shot. Even if the total power of the pulse is known, it is unknown where in the pulse the particle was hit.Fortunately, EMC can also be used to recover this effective strength of the electric field using the following equation [Loh].
+So far we have assumed that the diffraction patterns from reproducible particles sample the same molecular transform. This is true as long as $E_0$, the strength of the x-ray pulse that hit the particle, is the same for each exposure. This we know is not the case (see Chapter 3). Due to the randomness of the SASE process the power of the pulse does fluctuate from shot to shot. Even if the total power of the pulse is known, it is unknown where in the pulse the particle was hit.Fortunately, EMC can also be used to recover this effective strength of the electric field using the following equation \cite{Loh2010}.
 \begin{equation}
 \Phi(K,W) = \frac{\sum_{j} R_{i,j} \sum_{i} K_{i,k}^2 }{\sum_{j} R_{i,j} \sum_{i} W_{i,j} K_{i,k}}
 \end{equation}
-This so-called scaling term $\Phi(W,K)$ is calculated each iteration after the maximization step. It is used in the final compression step to scale the diffraction pattern, according to which orientation it is put in.
+This so-called scaling term $\Phi(W,K)$ is calculated each iteration after the maximization step. It is used in the maximization step to scale the diffraction pattern when construction a new model.
 
 %Number of orientations
 
@@ -52,7 +52,7 @@ This so-called scaling term $\Phi(W,K)$ is calculated each iteration after the m
 %\end{equation}
 
 
-It is amazing how much noise EMC can tolerate, before it is unable to retrieve orientations [private discussions Tomas]. Even is the noise model is not accurate. For the success of model assembly, it seems more important for EMC to, initially when the model is far from true, have the option to place diffraction patterns in a wide distributions of orientations, than it is to know the behaviour of the noise exactly.
+It is amazing how much noise EMC can tolerate, and still be able to retrieve orientations. This is true even if the noise model is not accurate. For the success of model assembly, it seems more important for EMC to, initially when the model is far from true, have the option to place diffraction patterns in a wide distributions of orientations, than it is to know the behaviour of the noise exactly.
 
 
 %\subsection{Multi-model EMC}
