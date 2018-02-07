@@ -42,7 +42,7 @@
 
 	% Font settings
 	\usepackage{type1cm}
-	\usepackage[latin1]{inputenc}
+	\usepackage[utf8]{inputenc}
 	\usepackage[T1]{fontenc}
 	\usepackage{mathptmx}
 	
@@ -83,15 +83,15 @@
     %\frontmatterMonograph 
  
    % Optional dedication
-   \dedication{Dedicated to our new Life: Emmanuel and Mathis}
+   \dedication{Dedicated to new Life: Emmanuel and Mathis}
  
     % Environment used to create a list of papers
     \begin{listofpapers}
-    	\item Imaging single cells in a beam of live cyanobacteria. %\label{ImCell}
-        \item Open dataset of live cyanobacterial cells imaged using an X-ray laser. %\label{DataCell}
-        \item RedFlamingo: Suite for automated classification of diffraction patterns. %\label{RefFlamingo}
-        \item Template-based classification of diffraction patterns. %\label{TempClass}
-        \item Open dataset of RDV particles. %\label{DataRDV}
+    	\item \textbf{van der Schot, G} et al. Imaging single cells in a beam of live cyanobacteria. \textit{Nature Communications} \textbf{6}, 5704 (2015). %\label{ImCell}
+        \item \textbf{van der Schot, G} et al. Open dataset of live cyanobacterial cells imaged using an X-ray laser. \textit{Nature Scientific Data} \textbf{3},  160064 (2016)%\label{DataCell}
+        %\item \textbf{van der Schot, G} et al. RedFlamingo: Suite for automated classification of diffraction patterns. \textit{in preparation }%\label{RedFlamingo}
+        \item Munke, A., \textbf{van der Schot, G} et al. Open dataset of RDV particles. \textit{in preparation} %\label{DataRDV}
+        
     \end{listofpapers}
     
     \begin{listofsupportingpapers}
@@ -102,7 +102,8 @@
 	\item M. Vendruscolo \textit{et al.} Protein structure
 determination using chemical shifts, NMR in Mechanistic Systems Biology, Chapter 10, 107-110, 2009.
  	\item A. Rosato    \textit{et al.} CASD-NMR: critical assessment of automated structure determination by NMR. Nature Methods, 6(9):625-626, 2009.
- 	\item R.P. Kurta   \textit{et al.} Phys. Rev. Lett. 119, 158102, 2017.
+ 	\item T. Gorkhover Femtosecond X-ray Fourier holography imaging of free-flying nanoparticles. Nature Photonics \textit{Accepted}
+ 	\item R.P. Kurta   \textit{et al.} Correlations in scattered x-ray laser pulses reveal nanoscale structural features of viruses. Phys. Rev. Lett. 119, 158102, 2017.
 	\item H.K.N. Reddy \textit{et al.} Coherent soft X$-$ray diffraction imaging of coliphage PR772 at the Linac coherent light source. Scientific Data, 4:170079, 2017.
 	\item  B.J. Daurer \textit{et al.} Experimental strategies for imaging bioparticles with femtosecond hard X-ray pulses. IUCrJ, 4(3):252-262, 2017.
 	\item M.F. Hantke  \textit{et al.} A data set from flash X-ray imaging of carboxysomes. Scientific data, 3:160061, aug 2016.
@@ -126,6 +127,7 @@ determination using chemical shifts, NMR in Mechanistic Systems Biology, Chapter
     
     % Include your chapters here.
     %\input{Introduction.tex}
+    \input{ListOfAbbreviations.tex}
     \input{Chapter_01_Motivation.tex}
     \input{Chapter_02_InteractionLightAndMatter.tex}
     \input{Chapter_03_GenerationXrayXFEL.tex}
@@ -135,15 +137,16 @@ determination using chemical shifts, NMR in Mechanistic Systems Biology, Chapter
     \input{Chapter_07_Reconstruction3DObject.tex}
     \input{Chapter_08_ImageClassification.tex}
     \input{Chapter_09_Results.tex}
-    %\input{Chapter_10_Outlook.tex}
-	\input{Chapter_11_SammanfattningPaSvenska.tex}
-
+    \input{Chapter_10_Discussion.tex}	
+	%\input{Chapter_11_SammanfattningPaSvenska.tex}
+	%\input{Chapter_12_Acknowledgements.tex}
+	
 \backmatter
     % References
     % No restriction is set to the reference styles
     % Save your references in References.bib
     \nocite{*} % Remove this for your own citations
-    \bibliographystyle{plain}
+    \bibliographystyle{ieeetr}
     \bibliography{Thesis}
 
 \end{document}
