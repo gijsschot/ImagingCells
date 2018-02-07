@@ -41,8 +41,8 @@ A common method to determine the size of an object is fitting the central speckl
 \end{figure}
 
 
-\subsection{Edge detection}
-Some objects can be characterized by having sharp edges. A sharp edge in real space corresponds to a streak in the direction perpendicular to the edge in Fourier space. Objects and/or orientations of objects might be classified by determining if, and how many, streaks are present. Figure explains the idea behind a streak finding algorithm.
+\subsection{Edge detection / Assess signal distribution radially}
+Some objects can be characterized by having sharp edges. A sharp edge in real space corresponds to a streak in the direction perpendicular to the edge in Fourier space. Objects and/or orientations of objects might be classified by determining if, and how many, streaks are present. Figure \ref{fig:edge_detection} explains the idea behind a streak finding algorithm.
 
 \begin{figure}[!h]
 \centering
@@ -54,8 +54,7 @@ Some objects can be characterized by having sharp edges. A sharp edge in real sp
 
 It might also be possible to determine the elongation of the particle, either by evaluating the elongation of the central speckle (\textbf{Paper XVII},\textbf{Paper XIII}) or by evaluating the elongation of the central term in a filtered autocorrelation. This is useful in discerning between diffraction from spherical and non-spherical objects. Figure \ref{fig:shape_assessment} shows two diffraction patterns: A and B. Diffraction pattern A originates from a icosahedral object and thus has a round central speckle (CS\_A). The fraction of the shortest distance from the center of the central speckle to the edge of the central speckle (minor) divided by the longest distance is called the elongation $\epsilon_{DP}$. Round central speckles have an elongation of 1. The central speckle of pattern B (CS\_B) is much more elongated. 
 
-The evaluation of both the diffraction pattern and the autocorrelations show a similar trend. AC\_A shows a roundish particle, whereas AC\_B shows a density that is more elongated. In the radial average of AC\_A and AC\_B this becomes visible as a mass beyond the maximum. The green area is considered to be part of a round particle, and the red area is considered to be part of an elongated particle. The fraction of the green area divided by the green plus the red area constitutes the elongated parameter $\epsilon_{AC}$ \footnote{Of course both these methods does not say anything about the elongation of the particle in the direction of the beam.
-} The autocorrelation can only be used for the evaluation of convex objects, as non-convex object might appear roundish. 
+The evaluation of the autocorrelations of A and B show a similar result. AC\_A shows a roundish particle, whereas AC\_B shows a density that is more elongated. In the radial average of AC\_A and AC\_B this becomes visible as a mass beyond the maximum. The green area is considered to be part of a round particle, and the red area is considered to be part of an elongated particle. The fraction of the green area divided by the green plus the red area constitutes the elongated parameter $\epsilon_{AC}$. The autocorrelation can only be used for the evaluation of convex objects, as non-convex object might appear roundish. 
 
 \begin{figure}[!h]
 \centering

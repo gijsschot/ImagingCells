@@ -1,4 +1,3 @@
-%\part{Results}
 \chapter{Experimental Results}
 \section{Imaging live cells}
 For the study described in \textbf{Paper I} we used cells of two species of cyanobacteria: \textit{Cyanobium gracile} and \textit{Synechococcus elongatus}. Cyanobacteria are photosynthetic bacteria that can be found in almost any habitat on earth, ranging from hot volcanic areas to cold polar ice caps, and play an important role in the global carbon and nitrogen cycle. In a 25 day cycle an algal bloom of 1000 $km^2$ can sequester around 22,000 tonnes of atmospheric carbon into organic carbon before an infection by cyanophages cause the bloom to collapse \cite{Lehahn2014}.
@@ -12,7 +11,7 @@ We collected diffraction patterns of \textit{C. gracile} cells for an hour at a 
 
 Phases were retrieved using the Hawk software package \cite{Maia2010}. For each pattern 400 reconstructions were made, each starting from different random initial phases. These reconstructions consisted of 5000 iterations with the RAAR algorithm \cite{Luke2005}, using a Shrinkwrap algorithm \cite{Marchesini2003} for support determination, and concluded with 100 iterations with the ER algorithm \cite{Fienup1978, Fienup1982}. The initial and final support sizes were manually determined. No real-value constraints were used since we anticipated the effects of absorption in the thick cells to give effects similar to a phase object. 
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	\centering 
 		\includegraphics[width=120mm]{FF.png}
 	\caption{Diffraction patterns and reconstructed exit wave of six \textit{C. gracile} cells. The resolution of each reconstruction is indicated by the white circle. Feature smaller than the circle should not be interpreted as sample features.}
@@ -21,7 +20,7 @@ Phases were retrieved using the Hawk software package \cite{Maia2010}. For each 
 
 Figure \ref{fig:Reconstructions} shows the reconstructed exit wave-fronts for six \textit{C. gracile} cells together with the corresponding diffraction patterns, and a synthetic Nomarski image. The reconstructions represent 2D projections of the electron density of the cells. The images show the expected morphologies of cells during division \cite{Komarek1999,Bazire1988}. The resolution of each reconstruction is indicated by the size of the round white dot. This means that features smaller than the dot were not recovery reproducibly and should not be interpreted as features of the sample.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	\centering 
 		\includegraphics[width=120mm]{prtf.png}
 	\caption{Image resolution of the reconstruction. For each reconstruction shown in Fig. \ref{fig:Reconstructions}, the corresponding PRTF is shown. Resolution is determined as the first time the PRTF function drops below 1/e \cite{Seibert2011}. The white dot in the reconstruction has the size of the resolution determined from the PRTF.}
@@ -30,7 +29,7 @@ Figure \ref{fig:Reconstructions} shows the reconstructed exit wave-fronts for si
 
 The resolution of the reconstructions were estimated from the PRTF (See Figure \ref{fig:PRTF}), using the 1/e threshold. Before calculating the PRTF and averaging the repeated reconstructions we removed outliers between the reconstructions by applying a threshold to the Fourier error. Clustering validates the results from using a threshold on the Fourier error and the real-space error. On average the main cluster contained about 370 out of 400 reconstructions (93\%), except for one case where only 96 reconstructions formed the biggest cluster (Figure \ref{fig:Clustering}). That the main cluster often incorporates most reconstructions, and has the lowest error scores made us believe that the average image of the main cluster is likely to represent the best reconstruction minimum. 
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	\centering 
 		\includegraphics[width=120mm]{Clustering.png}
 	\caption{Scatter plots of the Fourier vs real-space error for each individual reconstruction for each average reconstruction shown in Fig. \ref{fig:Reconstructions}. Each cluster has its own color. The image in the top left corner is the average reconstruction of all the reconstructions selected within the blue box. The threshold for cluster selection has always been the Fourier error, which avoids selecting for similarity. }
@@ -39,7 +38,7 @@ The resolution of the reconstructions were estimated from the PRTF (See Figure \
 
 Detector saturation limited the achievable resolution. A number of much stronger exposures than shown in Figure \ref{fig:Reconstructions} were also recorded, and in some of these exposures the diffraction signal extended to nanometer resolution. Figure \ref{fig:StrongHit} shows one such pattern for a live \textit{S. elongatus} cell at 1,100 eV photon energy. Two pnCCD detector pairs were used to record this pattern. The configuration of the central back detector in Figure \ref{fig:StrongHit} is identical to the detector to record the diffraction patterns shown in Figure \ref{fig:Reconstructions}. The front detector is the same type as the back detector but is placed at 220 mm from the interaction region. A large part of the back detector was saturated, which prevented reliable phasing. The signal however extended beyond 4 nm resolution on the front detectors, which is the size of a small protein molecule. More than 58 million scattered photons were recorded on the back detectors, and 1.3 million on the front detectors. The size of the cell was derived from the autocorrelation, shown in the boxed panel in the middle of Figure \ref{fig:StrongHit}. 
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 	\centering 
 		\includegraphics[width=100mm]{StrongHit.png}
 	\caption{Combined diffraction signal of front and back detector. In strong hits the scattered signal from a micron-sized \textit{S. elongatus} cell extends to 4 nm full-period resolution. The size of a small molecule is 4 nm. The cell was alive during the exposure. The central area of the diffraction pattern is saturated, which prevented image reconstruction. The autocorrelation, shown in the central box, indicates the shape of the imaged cell.}\label{fig:StrongHit}
@@ -58,7 +57,7 @@ Rice Dwarf Virus (RDV) is the causal agent of rice dwarf disease. It can result 
 As part of a large international collaboration called the Single Particle Imaging initiative (SPI)\cite{Aquila2015a}, an extensive dataset of RDV hits was collected. Most diffraction patterns in this data set are not affected by detector saturation, which makes it possible to estimate the size of the icosahedral-shaped particle by determining the location of the first minima (see Chapter 8).
 RDV was classified on the size and shape of the central speckle, and the size and shape of the central term in the autocorrelation. If the central speckle and the central term of the autocorrelation are circular or only slightly elongated the particle was classified as a single particle.  
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=120mm]{Chapter_09_Results_RDV.png}
 \caption{Classification of particles. The size distribution of the 3608 diffraction patterns that were classified as single hits shows a peak at 63 nm. Right panels shows an  example of a diffraction pattern of each class. The gap between the two detector halves and the beam stop is masked out.}\label{fig:Classes}
@@ -73,7 +72,7 @@ The second example deals with the selection of diffraction patterns based on the
 
 In the experiment PBCV particles were injected into the XFEL focus using a GDVN. As expected for particles significantly smaller than the drop size, this resulted in a wide size distribution, of which elongation assessment showed that most particles are very round. Using the streak finding algorithm described in Chapter 8, we could find patterns that show clear streaks, as shown in Figure \ref{fig:PatternSelection}. Separating these patterns from the large bulk was not trivial without the streak finding algorithm.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=120mm]{Chapter_09_Results_PBCV.png}
 \caption{Sizing and selection results for PBCV. Sizing of particles originating from a PBCV-1 run shows a wide size distribution. The particles with a diameter of around 70 nm could be the Xenon-clusters, co-injected with the PBCV particles. The peak around 170 might be originating from PBCV, and the peak of particle-size 240 might be a contamination by an earlier imaged virus of approximately that size. Most particles were very spherical, but using the edge detection algorithm, patterns similar to \ref{fig:sizing} were selected. Six examples of such patterns are shown in the bottom panels.}\label{fig:PatternSelection}
@@ -85,7 +84,7 @@ In the experiment PBCV particles were injected into the XFEL focus using a GDVN.
 
 In the experiment such as described by \textbf{Paper X}, Xenon droplets of approximately 70 nm in diameter are injected using a different injection procedure, but aimed at the same interaction region. If a drop and particle are imaged simultaneously (or any combination, such as drop-drop or particle-particle), a diffraction pattern similar to Figure \ref{fig:multiplefinding} will be measured. To identify the patterns with and without interference structure, the algorithm described in Chapter 8 can be used. Table \ref{fig:multiple_find} shows the results of the classification method, for samples varying between 70 and 1000 nm in size. The diffraction patterns of the smallest sample (70 nm) came from a different experiment in which the sample was not co-injected with Xenon droplets. Therefore the fraction of normal vs. multiple patterns is much lower. Also the xenon injection sample 2 is less successful than that of sample 1 and sample 3-4.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=100mm]{Chapter_09_Results_successrate.png}
 \caption{Identification of multiple particles in the focus. Diffraction patterns from five different samples ranging from > 1000 nm to 70 nm in size were classified as either singles or coming from multiple particles at the same time. There are three classes: MultipleDistance, Normal, and Undetermined. Patterns with strong saturation are put in the latter class, because the autocorrelation sometimes shown strong artefacts because of it. The percentage between brackets indicates the successrate of classifying the patterns correctly in the class.}\label{fig:multiple_find}
@@ -96,7 +95,7 @@ In the experiment such as described by \textbf{Paper X}, Xenon droplets of appro
 
 In this section we describe the results from the automated shape assessment of an elongated virus particle, that is heterogeneous in size. The expected size is around 500 nm in the short direction and anywhere between 500 nm - 2000 nm in the extended direction. Using the shape assessment algorithm illustrated by Figure\ref{fig:detailed_shape_assessment}, we determined the shape of many particles of which estimated size from the filtered autocorrelation was larger than 400 nm. Figure \ref{fig:majorminor} shows a scatter plot of the maximum and minimum size each particle. As can be seen from the point density a large fraction of the particles are roundish in shape, but there are also particles that are twice the size. The size variations are roughly as expected. In the future this methods might find itself useful for the automation of the reconstruction of heterogeneous particles of unknown size, such as cells.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=100mm]{Chapter_09_Results_Refined_Sizing.png}
 \caption{Scatter plot of the minium size of the particle vs. the maximum size of a particle, derived from the filtered autocorrelation. }\label{fig:majorminor}
