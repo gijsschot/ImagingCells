@@ -1,0 +1,33 @@
+\newenvironment{abbreviations}{
+  %\begin{tabular}{ll}
+  \begin{tabular}{p{1.5cm}l}
+}{
+  \end{tabular}
+}
+\newcommand{\abb}[2]{#1 & #2 \\}
+
+\chapter*{List of abbreviations}
+
+\begin{abbreviations}
+  \abb{AMO}{Atomic, Molecular and Optical Sciences}
+  \abb{FXI}{femtosecond X-ray Imaging}
+  \abb{EM}{Electro Magnetic} % double EM
+  \abb{DFT}{Direct Fourier Transform}  
+  \abb{EMC}{Expansion Maximization Compression}
+  \abb{ER}{Error Reduction}
+  \abb{ESI}{Electro Spray Ionisation}
+  \abb{FEL}{Free-electron laser}
+  \abb{FIB}{Focused ion beam}
+  \abb{fs}{femtosecond}
+  \abb{GDVN}{Gas Dynamic Virtual Nozzle}
+  \abb{HIO}{Hybrid Input Output}
+  \abb{LCLS}{Linac Coherent Light Source}
+  \abb{NMR}{Nuclear Magnetic Resonance}
+  \abb{PRTF}{Phase Retrieval Transfer Function}
+  \abb{RAAR}{Relaxed Averaged Alternating Reflections}
+  \abb{SASE}{Self Amplified Stimulated Emission}
+  \abb{SFX}{Serial femtosecond x-ray crystallograhpy}
+  \abb{SPI}{Single Particle Imaging}
+  \abb{XFEL}{X-ray Free-Electron Laser}
+\end{abbreviations}
+
